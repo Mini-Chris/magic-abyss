@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3pbthx3wofro"]
+
+[ext_resource type="Texture2D" uid="uid://bcgkdq7bj32tg" path="res://assets/Prototype_Character/Prototype_Character.png" id="1_2klcn"]
+[ext_resource type="Script" path="res://scripts/prototype_character.gd" id="1_ifwwv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnfj0"]
+size = Vector2(8, 5)
+
+[node name="PrototypeCharacter" type="CharacterBody2D"]
+script = ExtResource("1_ifwwv")
+move_speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2klcn")
+hframes = 4
+vframes = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_rnfj0")
