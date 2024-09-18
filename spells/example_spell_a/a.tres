@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b1d2i11u844pt"]
+
+[ext_resource type="Script" path="res://spells/example_spell_a/a.gd" id="1_bsnoj"]
+[ext_resource type="Texture2D" uid="uid://cm7m7pdjkch2h" path="res://reference_assets/Effects.png" id="1_eac3j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pns61"]
+atlas = ExtResource("1_eac3j")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_bsnoj")
+name = "Example A"
+icon = SubResource("AtlasTexture_pns61")
+passive = false

@@ -13,7 +13,10 @@ config_version=5
 config/name="Magic Abyss"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+Inventory="*res://inventory/inventory.tscn"
 
 [display]
 
@@ -57,7 +60,21 @@ up={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":-1.0,"script":null)
 ]
 }
+cast={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(136, 18),"global_position":Vector2(145, 64),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="Characters"
+2d_physics/layer_3="Props"
+2d_physics/layer_4="Projectiles"
+2d_physics/layer_5="Triggers"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

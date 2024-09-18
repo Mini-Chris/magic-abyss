@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjgw8xn2tkcix"]
+[gd_scene load_steps=6 format=3 uid="uid://bjgw8xn2tkcix"]
 
 [ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="1_wqean"]
+[ext_resource type="Script" path="res://camera/camera.gd" id="2_dilum"]
+
+[sub_resource type="Gradient" id="Gradient_eg0fs"]
+colors = PackedColorArray(0, 0.552941, 0, 1, 0.282353, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i04ko"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3mhwe"]
+color_ramp = SubResource("Gradient_eg0fs")
+noise = SubResource("FastNoiseLite_i04ko")
 
 [node name="Game" type="Node2D"]
 
+[node name="Background" type="Sprite2D" parent="."]
+texture = SubResource("NoiseTexture2D_3mhwe")
+
 [node name="PrototypeCharacter" parent="." instance=ExtResource("1_wqean")]
-position = Vector2(386, 215)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("2_dilum")
+target = NodePath("../PrototypeCharacter")

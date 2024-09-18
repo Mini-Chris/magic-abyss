@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6lrdrncnh5mc"]
+
+[ext_resource type="Script" path="res://inventory/inventory.gd" id="1_6gtxp"]
+[ext_resource type="Script" path="res://spells/spell_resource.gd" id="2_dbhm8"]
+[ext_resource type="Resource" uid="uid://b1d2i11u844pt" path="res://spells/example_spell_a/a.tres" id="3_j3hpf"]
+[ext_resource type="Resource" uid="uid://cjyh38c2pygrt" path="res://spells/example_spell_b/b.tres" id="4_lvyn8"]
+
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_6gtxp")
+actives = Array[ExtResource("2_dbhm8")]([ExtResource("3_j3hpf"), ExtResource("4_lvyn8"), null, null, null, null])
+passives = Array[ExtResource("2_dbhm8")]([null, null, null, null, null, null])
+metadata/_edit_use_anchors_ = true
+
+[node name="HotbarContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Hotbars" type="GridContainer" parent="HotbarContainer"]
+layout_mode = 2
+columns = 6

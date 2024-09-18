@@ -13,5 +13,8 @@ func _physics_process(delta: float) -> void:
 		input_direction = input_direction.normalized()
 	
 	velocity = input_direction * move_speed
-
+	
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("cast"):
+		Inventory.actives[Inventory.selection]._cast()
