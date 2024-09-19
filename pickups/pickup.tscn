@@ -23,7 +23,7 @@ spell = ExtResource("2_0mmqy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 texture = SubResource("AtlasTexture_pns61")
-offset = Vector2(0, -1.1121)
+offset = Vector2(0, -1.87356)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16

@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if not most_recent_interactable: return
+		if Inventory.lockInput: return
 		most_recent_interactable.interact()
 
 func _on_pickup_collider_area_entered(area: Area2D) -> void:

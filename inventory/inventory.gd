@@ -6,6 +6,7 @@ extends CanvasLayer
 @export var spells: Array[Spell]
 
 var selection: Spell
+var lockInput: bool = false
 
 func _ready() -> void:
 	select_next()
@@ -35,7 +36,10 @@ func replacement_popup(new_spell:Spell) -> Spell:
 		$ReplacementPopup/Content/Spells.add_child(spell_button)
 	
 	$ReplacementPopup.open_popup()
+	lockInput = true
 	var result = await $ReplacementPopup.chosen
+	lockInput = false
+	print("replacing spell")
 	spells[spells.find(result)] = new_spell
 	selection = new_spell
 	update_graphics()
