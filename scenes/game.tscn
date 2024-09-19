@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjgw8xn2tkcix"]
+[gd_scene load_steps=9 format=3 uid="uid://bjgw8xn2tkcix"]
 
 [ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="1_wqean"]
 [ext_resource type="Script" path="res://camera/camera.gd" id="2_dilum"]
+[ext_resource type="PackedScene" uid="uid://c547ti0rvu0uu" path="res://pickups/pickup.tscn" id="3_gr43d"]
+[ext_resource type="Resource" uid="uid://db00t52swblra" path="res://spells/example_spells/two.tres" id="4_tipbx"]
+[ext_resource type="Resource" uid="uid://dxholtqckxgl3" path="res://spells/example_spells/three.tres" id="5_8apdw"]
 
 [sub_resource type="Gradient" id="Gradient_eg0fs"]
 colors = PackedColorArray(0, 0.552941, 0, 1, 0.282353, 1, 0, 1)
@@ -22,3 +25,14 @@ texture = SubResource("NoiseTexture2D_3mhwe")
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_dilum")
 target = NodePath("../PrototypeCharacter")
+
+[node name="Pickup" parent="." instance=ExtResource("3_gr43d")]
+position = Vector2(-33, -53)
+
+[node name="Pickup2" parent="." instance=ExtResource("3_gr43d")]
+position = Vector2(0, -53)
+spell = ExtResource("4_tipbx")
+
+[node name="Pickup3" parent="." instance=ExtResource("3_gr43d")]
+position = Vector2(34, -53)
+spell = ExtResource("5_8apdw")

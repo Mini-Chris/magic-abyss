@@ -3,7 +3,8 @@ class_name Spell
 
 @export var name: String
 @export var icon: Texture2D
-@export var passive: bool
+@export var active: bool = true
+@export_multiline var description: String
 
 func _cast():
 	pass

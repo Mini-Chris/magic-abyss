@@ -3,18 +3,32 @@
 [ext_resource type="Texture2D" uid="uid://bcgkdq7bj32tg" path="res://prototype_character/Prototype_Character.png" id="1_2klcn"]
 [ext_resource type="Script" path="res://prototype_character/prototype_character.gd" id="1_ifwwv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnfj0"]
-size = Vector2(8, 5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_s702t"]
+radius = 4.0
 
 [node name="PrototypeCharacter" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 11
 script = ExtResource("1_ifwwv")
-move_speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_2klcn")
+offset = Vector2(0, -7)
 hframes = 4
 vframes = 14
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4.5)
-shape = SubResource("RectangleShape2D_rnfj0")
+[node name="WallCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_s702t")
+
+[node name="PickupCollider" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupCollider"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_s702t")
+
+[connection signal="area_entered" from="PickupCollider" to="." method="_on_pickup_collider_area_entered"]
+[connection signal="area_exited" from="PickupCollider" to="." method="_on_pickup_collider_area_exited"]

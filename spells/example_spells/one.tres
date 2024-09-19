@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b1d2i11u844pt"]
+
+[ext_resource type="Texture2D" uid="uid://cm7m7pdjkch2h" path="res://reference_assets/Effects.png" id="1_yef1j"]
+[ext_resource type="Script" path="res://spells/example_spells/example_spell.gd" id="2_nk5o6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pns61"]
+atlas = ExtResource("1_yef1j")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_nk5o6")
+name = "Example Spell One"
+icon = SubResource("AtlasTexture_pns61")
+active = true
+description = "This is an example spell.
+It does nothing..."

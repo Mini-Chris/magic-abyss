@@ -1,37 +1,58 @@
 extends CanvasLayer
 
-@export var actives: Array[Spell]
-@export var passives: Array[Spell]
-var selection: int
+@export var max_actives = 6
+@export var max_passives = 6
+
+@export var spells: Array[Spell]
+
+var selection: Spell
 
 func _ready() -> void:
-	update_graphics()
+	select_next()
+	call_deferred("update_graphics")
 
 func _input(event: InputEvent) -> void:
+	if Engine.is_editor_hint(): return
 	if not event is InputEventMouseButton: return
 	if not event.is_pressed(): return
 	if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-		selection = posmod(selection+1,6)
+		select_next()
+		while not selection.active: select_next()
 		update_graphics()
-		print(selection)
 	if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-		selection = posmod(selection-1,6)
+		select_next(-1)
+		while not selection.active: select_next(-1)
 		update_graphics()
-		print(selection)
 
+func replacement_popup(new_spell:Spell) -> Spell:
+	for child in $ReplacementPopup/Content/Spells.get_children(): child.queue_free()
+	
+	for existing_spell in spells:
+		if existing_spell.active != new_spell.active: continue
+		var spell_button: TextureButton = TextureButton.new()
+		spell_button.texture_normal = existing_spell.icon
+		spell_button.pressed.connect($ReplacementPopup.choose.bind(existing_spell))
+		$ReplacementPopup/Content/Spells.add_child(spell_button)
+	
+	$ReplacementPopup.open_popup()
+	var result = await $ReplacementPopup.chosen
+	spells[spells.find(result)] = new_spell
+	selection = new_spell
+	update_graphics()
+	return result
+
+func select_next(direction:int = 1):
+	selection = spells[posmod(spells.find(selection)+direction,spells.size())]
 
 func update_graphics() -> void:
-	for child in $HotbarContainer/Hotbars.get_children():
-		child.queue_free()
+	for child in $HotbarContainer/Hotbars/Actives/Spells.get_children(): child.queue_free()
+	for child in $HotbarContainer/Hotbars/Passives/Spells.get_children(): child.queue_free()
 	
-	for i in range(0,6):
-		var spell = actives[i]
+	for spell in spells:
 		var spell_icon = TextureRect.new()
-		
-		if spell:
-			spell_icon.texture = spell.icon
+		spell_icon.texture = spell.icon
+		if spell.active:
+			spell_icon.self_modulate = Color(1,1,1) if selection == spell else Color(0.5,0.5,0.5)
+			$HotbarContainer/Hotbars/Actives/Spells.add_child(spell_icon)
 		else:
-			spell_icon.texture = preload("res://inventory/empty_slot.tres")
-		
-		spell_icon.self_modulate = Color(1,1,1) if selection == i else Color(0.5,0.5,0.5)
-		$HotbarContainer/Hotbars.add_child(spell_icon)
+			$HotbarContainer/Hotbars/Passives/Spells.add_child(spell_icon)
