@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjgw8xn2tkcix"]
+[gd_scene load_steps=10 format=3 uid="uid://bjgw8xn2tkcix"]
 
+[ext_resource type="Script" path="res://scenes/room_procedure.gd" id="1_i1w67"]
 [ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="1_wqean"]
 [ext_resource type="Script" path="res://camera/camera.gd" id="2_dilum"]
 [ext_resource type="PackedScene" uid="uid://c547ti0rvu0uu" path="res://pickups/pickup.tscn" id="3_gr43d"]
@@ -18,7 +19,13 @@ noise = SubResource("FastNoiseLite_i04ko")
 [node name="Game" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 texture = SubResource("NoiseTexture2D_3mhwe")
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("1_i1w67")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World"]
 
 [node name="PrototypeCharacter" parent="." instance=ExtResource("1_wqean")]
 
