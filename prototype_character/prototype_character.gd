@@ -17,17 +17,18 @@ func _physics_process(delta: float) -> void:
 	velocity = input_direction * move_speed
 	
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("cast"):
-		var spell = Inventory.selection
-		if not spell: return
-		spell._cast()
 
 func _input(event: InputEvent) -> void:
+	if UI.lockInput: return
 	if Input.is_action_just_pressed("interact"):
 		if not most_recent_interactable: return
-		if Inventory.lockInput: return
 		most_recent_interactable.interact()
+	
+	if Input.is_action_pressed("cast"):
+		if Input.is_action_just_pressed("cast"):
+			var spell = UI.inventory.selection
+			if not spell: return
+			spell._cast()
 
 func _on_pickup_collider_area_entered(area: Area2D) -> void:
 	most_recent_interactable = area.get_parent()

@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://dxholtqckxgl3" path="res://spells/example_spells/three.tres" id="6_cyae7"]
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Map3" parent="." instance=ExtResource("1_e2ex3")]
 position = Vector2(-143, -436)

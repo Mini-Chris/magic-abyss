@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c547ti0rvu0uu"]
+[gd_scene load_steps=8 format=3 uid="uid://c547ti0rvu0uu"]
 
 [ext_resource type="Script" path="res://pickups/pickup.gd" id="1_y200l"]
 [ext_resource type="Resource" uid="uid://b1d2i11u844pt" path="res://spells/example_spells/one.tres" id="2_0mmqy"]
 [ext_resource type="Texture2D" uid="uid://cm7m7pdjkch2h" path="res://reference_assets/Effects.png" id="3_7se4w"]
+[ext_resource type="Texture2D" uid="uid://dgavev1i7bic" path="res://reference_assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/book_03g.png" id="3_8eesq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pns61"]
 atlas = ExtResource("3_7se4w")
@@ -15,15 +16,17 @@ radius = 14.0
 font_size = 8
 
 [node name="Pickup" type="Node2D"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
-y_sort_enabled = true
 script = ExtResource("1_y200l")
 spell = ExtResource("2_0mmqy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -10)
+[node name="Book" type="Sprite2D" parent="."]
+texture = ExtResource("3_8eesq")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.470076, 0.470076, 0.470076, 1)
+position = Vector2(0, -12)
 texture = SubResource("AtlasTexture_pns61")
-offset = Vector2(0, -1.96354)
+offset = Vector2(0, -1.69438)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
