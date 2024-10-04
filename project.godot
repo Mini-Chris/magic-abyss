@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Magic Abyss"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/debug_room.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
@@ -20,8 +20,7 @@ Inventory="*res://inventory/inventory.tscn"
 
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/scale=4.0
+window/stretch/scale=3.0
 
 [editor]
 

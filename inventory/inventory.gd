@@ -19,21 +19,23 @@ func _input(event: InputEvent) -> void:
 	if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 		select_next()
 		while not selection.active: select_next()
-		update_graphics()
 	if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 		select_next(-1)
 		while not selection.active: select_next(-1)
-		update_graphics()
 
 func replacement_popup(new_spell:Spell) -> Spell:
-	for child in $ReplacementPopup/Content/Spells.get_children(): child.queue_free()
+	for child in %ReplaceableSpells.get_children(): child.queue_free()
 	
 	for existing_spell in spells:
 		if existing_spell.active != new_spell.active: continue
 		var spell_button: TextureButton = TextureButton.new()
 		spell_button.texture_normal = existing_spell.icon
 		spell_button.pressed.connect($ReplacementPopup.choose.bind(existing_spell))
-		$ReplacementPopup/Content/Spells.add_child(spell_button)
+		%ReplaceableSpells.add_child(spell_button)
+	
+	$ReplacementPopup/PanelContainer/MarginContainer/Content/ReplacementIcon.texture = new_spell.icon
+	$ReplacementPopup/PanelContainer/MarginContainer/Content/ReplacementName.text = new_spell.name
+	$ReplacementPopup/PanelContainer/MarginContainer/Content/ReplacementDesc.text = new_spell.description
 	
 	$ReplacementPopup.open_popup()
 	lockInput = true
@@ -46,17 +48,19 @@ func replacement_popup(new_spell:Spell) -> Spell:
 	return result
 
 func select_next(direction:int = 1):
-	selection = spells[posmod(spells.find(selection)+direction,spells.size())]
+	var index = posmod(spells.find(selection)+direction,spells.size())
+	selection = spells[index]
+	%ActiveIndicator.position.x = index * 16
 
 func update_graphics() -> void:
-	for child in $HotbarContainer/Hotbars/Actives/Spells.get_children(): child.queue_free()
-	for child in $HotbarContainer/Hotbars/Passives/Spells.get_children(): child.queue_free()
+	for child in %ActiveSpells.get_children(): child.queue_free()
+	for child in %PassiveSpells.get_children(): child.queue_free()
+	%ActiveSpells.custom_minimum_size.x = max_actives*16
 	
 	for spell in spells:
 		var spell_icon = TextureRect.new()
 		spell_icon.texture = spell.icon
 		if spell.active:
-			spell_icon.self_modulate = Color(1,1,1) if selection == spell else Color(0.5,0.5,0.5)
-			$HotbarContainer/Hotbars/Actives/Spells.add_child(spell_icon)
+			%ActiveSpells.add_child(spell_icon)
 		else:
-			$HotbarContainer/Hotbars/Passives/Spells.add_child(spell_icon)
+			%PassiveSpells.add_child(spell_icon)

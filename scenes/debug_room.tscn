@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjgw8xn2tkcix"]
+
+[ext_resource type="PackedScene" uid="uid://bol4m3y2x4555" path="res://rooms/maps/map3.tscn" id="1_e2ex3"]
+[ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="2_myydy"]
+[ext_resource type="Script" path="res://camera/camera.gd" id="3_b13j5"]
+[ext_resource type="PackedScene" uid="uid://c547ti0rvu0uu" path="res://pickups/pickup.tscn" id="4_ox1ol"]
+[ext_resource type="Resource" uid="uid://db00t52swblra" path="res://spells/example_spells/two.tres" id="5_h5fkp"]
+[ext_resource type="Resource" uid="uid://dxholtqckxgl3" path="res://spells/example_spells/three.tres" id="6_cyae7"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Map3" parent="." instance=ExtResource("1_e2ex3")]
+position = Vector2(-143, -436)
+
+[node name="PrototypeCharacter" parent="." instance=ExtResource("2_myydy")]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("3_b13j5")
+target = NodePath("../PrototypeCharacter")
+
+[node name="Pickup" parent="." instance=ExtResource("4_ox1ol")]
+position = Vector2(79, -30)
+
+[node name="Pickup2" parent="." instance=ExtResource("4_ox1ol")]
+position = Vector2(79, 1)
+spell = ExtResource("5_h5fkp")
+
+[node name="Pickup3" parent="." instance=ExtResource("4_ox1ol")]
+position = Vector2(81, 36)
+spell = ExtResource("6_cyae7")
