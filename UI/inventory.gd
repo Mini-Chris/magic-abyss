@@ -13,12 +13,10 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
-	if not event is InputEventMouseButton: return
-	if not event.is_pressed(): return
-	if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+	if event.is_action_pressed("select_next"):
 		select_next()
 		while not selection.active: select_next()
-	if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+	if Input.is_action_pressed("select_prev"):
 		select_next(-1)
 		while not selection.active: select_next(-1)
 

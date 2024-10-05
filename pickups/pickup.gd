@@ -7,10 +7,12 @@ extends Node2D
 		spell = new
 		if not is_node_ready(): return
 		$Icon.texture = new.icon
+		name = spell.name
 
 func _ready() -> void:
-	if spell:
-		$Icon.texture = spell.icon
+	if not spell and not Engine.is_editor_hint(): queue_free()
+	$Icon.texture = spell.icon
+	name = spell.name
 
 func interact():
 	if UI.inventory.spells.has(spell): return

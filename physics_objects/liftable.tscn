@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf1mykqr6qcmw"]
+
+[ext_resource type="Script" path="res://physics_objects/liftable.gd" id="1_uh1lr"]
+[ext_resource type="Texture2D" uid="uid://d1ubcw6bbkxm0" path="res://reference_assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/shard_01i.png" id="2_tl7xr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4nco"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_273ot"]
+radius = 15.0
+
+[node name="Liftable" type="CharacterBody2D"]
+script = ExtResource("1_uh1lr")
+texture = ExtResource("2_tl7xr")
+
+[node name="StaticCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g4nco")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("2_tl7xr")
+
+[node name="PickupRange" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange"]
+shape = SubResource("CircleShape2D_273ot")

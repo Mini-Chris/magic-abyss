@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjgw8xn2tkcix"]
+[gd_scene load_steps=9 format=3 uid="uid://bjgw8xn2tkcix"]
 
 [ext_resource type="PackedScene" uid="uid://bol4m3y2x4555" path="res://rooms/maps/map3.tscn" id="1_e2ex3"]
 [ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="2_myydy"]
 [ext_resource type="Script" path="res://camera/camera.gd" id="3_b13j5"]
 [ext_resource type="PackedScene" uid="uid://c547ti0rvu0uu" path="res://pickups/pickup.tscn" id="4_ox1ol"]
-[ext_resource type="Resource" uid="uid://db00t52swblra" path="res://spells/example_spells/two.tres" id="5_h5fkp"]
-[ext_resource type="Resource" uid="uid://dxholtqckxgl3" path="res://spells/example_spells/three.tres" id="6_cyae7"]
+[ext_resource type="Texture2D" uid="uid://bu67vg15wfkk8" path="res://reference_assets/SnoopethDuckDuck Things/1px/45.png" id="7_21qtb"]
+[ext_resource type="Resource" uid="uid://lpa5g63m7o6i" path="res://spells/active/melee_attacks/water_jet/water_jet.tres" id="8_nejfb"]
+[ext_resource type="Texture2D" uid="uid://etaijslg1naa" path="res://reference_assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/gem_01d.png" id="8_nvl7y"]
+[ext_resource type="PackedScene" uid="uid://cf1mykqr6qcmw" path="res://physics_objects/liftable.tscn" id="9_a7k8l"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -19,13 +21,20 @@ position = Vector2(-143, -436)
 script = ExtResource("3_b13j5")
 target = NodePath("../PrototypeCharacter")
 
-[node name="Pickup" parent="." instance=ExtResource("4_ox1ol")]
-position = Vector2(79, -30)
+[node name="Stone Barrage" parent="." instance=ExtResource("4_ox1ol")]
+position = Vector2(-62, 0)
 
-[node name="Pickup2" parent="." instance=ExtResource("4_ox1ol")]
-position = Vector2(79, 1)
-spell = ExtResource("5_h5fkp")
+[node name="Water Jet" parent="." instance=ExtResource("4_ox1ol")]
+position = Vector2(-63, 32)
+spell = ExtResource("8_nejfb")
 
-[node name="Pickup3" parent="." instance=ExtResource("4_ox1ol")]
-position = Vector2(81, 36)
-spell = ExtResource("6_cyae7")
+[node name="Rock" parent="." instance=ExtResource("9_a7k8l")]
+position = Vector2(-95, -20)
+
+[node name="BigKey" parent="." instance=ExtResource("9_a7k8l")]
+position = Vector2(71, 16)
+texture = ExtResource("7_21qtb")
+
+[node name="FireRune" parent="." instance=ExtResource("9_a7k8l")]
+position = Vector2(89, -26)
+texture = ExtResource("8_nvl7y")

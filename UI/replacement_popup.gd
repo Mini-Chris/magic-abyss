@@ -29,7 +29,6 @@ func open_popup(new_spell:Spell) -> Spell:
 	UI.lockInput = true
 	var result = await chosen
 	UI.lockInput = false
-	print("replacing spell")
 	UI.inventory.spells[UI.inventory.spells.find(result)] = new_spell
 	UI.inventory.selection = new_spell
 	UI.inventory.update_graphics()

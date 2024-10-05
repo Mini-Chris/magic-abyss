@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://lpa5g63m7o6i"]
+
+[ext_resource type="Texture2D" uid="uid://dic55klfam3u5" path="res://reference_assets/Key Items 16x16/14.png" id="1_uh7ut"]
+[ext_resource type="PackedScene" uid="uid://dgqa2q3m1ofuc" path="res://spells/active/melee_attacks/water_jet/water_splash.tscn" id="2_pxwqj"]
+[ext_resource type="Script" path="res://spells/lib/scene_instance_spell.gd" id="3_gdly5"]
+
+[resource]
+script = ExtResource("3_gdly5")
+scene = ExtResource("2_pxwqj")
+lifetime = 0.3
+name = "Water Jet"
+icon = ExtResource("1_uh7ut")
+active = true
+cooldown = 0.0
+continuous = true
+description = "Creates a constant torrent of water which can push things around"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp5njp7gfyhhx"]
+
+[ext_resource type="Script" path="res://spells/lib/projectile.gd" id="1_vpq8n"]
+[ext_resource type="Texture2D" uid="uid://dtlalpik8a7vv" path="res://reference_assets/Key Items 16x16/19.png" id="2_e31wj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dbnsh"]
+radius = 6.08276
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_vpq8n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dbnsh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_e31wj")

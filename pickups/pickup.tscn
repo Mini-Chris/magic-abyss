@@ -1,13 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c547ti0rvu0uu"]
+[gd_scene load_steps=7 format=3 uid="uid://c547ti0rvu0uu"]
 
 [ext_resource type="Script" path="res://pickups/pickup.gd" id="1_y200l"]
-[ext_resource type="Resource" uid="uid://b1d2i11u844pt" path="res://spells/example_spells/one.tres" id="2_0mmqy"]
-[ext_resource type="Texture2D" uid="uid://cm7m7pdjkch2h" path="res://reference_assets/Effects.png" id="3_7se4w"]
+[ext_resource type="Resource" uid="uid://b8emt5jm5sk8l" path="res://spells/active/ranged_attacks/stone_barrage/stone_barrage.tres" id="2_75h1i"]
 [ext_resource type="Texture2D" uid="uid://dgavev1i7bic" path="res://reference_assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/book_03g.png" id="3_8eesq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pns61"]
-atlas = ExtResource("3_7se4w")
-region = Rect2(0, 0, 16, 16)
+[ext_resource type="Texture2D" uid="uid://dtlalpik8a7vv" path="res://reference_assets/Key Items 16x16/19.png" id="4_qxxu5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wvyf"]
 radius = 14.0
@@ -15,9 +11,9 @@ radius = 14.0
 [sub_resource type="LabelSettings" id="LabelSettings_j6lrf"]
 font_size = 8
 
-[node name="Pickup" type="Node2D"]
+[node name="Stone Barrage" type="Node2D"]
 script = ExtResource("1_y200l")
-spell = ExtResource("2_0mmqy")
+spell = ExtResource("2_75h1i")
 
 [node name="Book" type="Sprite2D" parent="."]
 texture = ExtResource("3_8eesq")
@@ -25,8 +21,8 @@ texture = ExtResource("3_8eesq")
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0.470076, 0.470076, 0.470076, 1)
 position = Vector2(0, -12)
-texture = SubResource("AtlasTexture_pns61")
-offset = Vector2(0, -1.69438)
+texture = ExtResource("4_qxxu5")
+offset = Vector2(0, 1.24405)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
