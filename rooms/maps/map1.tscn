@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://0jl2ljhdjlih"]
 
-[ext_resource type="TileSet" uid="uid://dalvkkipa6hg5" path="res://assets/tilesets/dungeon_16x16.tres" id="1_y1mvt"]
-[ext_resource type="TileSet" uid="uid://dbwn2oxhk72tr" path="res://assets/tilesets/16x32.tres" id="2_c51rt"]
+[ext_resource type="TileSet" uid="uid://dalvkkipa6hg5" path="res://rooms/tilesets/dungeon_16x16.tres" id="1_y1mvt"]
+[ext_resource type="TileSet" uid="uid://dbwn2oxhk72tr" path="res://rooms/tilesets/16x32.tres" id="2_c51rt"]
 
 [node name="Map1" type="Node2D"]
 

@@ -14,6 +14,8 @@ var lifted_object: Liftable = null:
 			$Lifted.texture=null
 		lifted_object = new_object
 
+
+
 func _ready() -> void:
 	InstanceManager.player = self
 
@@ -24,6 +26,14 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("down") - Input.get_action_strength("up"),
 	)
 	
+	if input_direction == Vector2.ZERO:
+		$AnimationTree.get("parameters/playback").travel("Idle")
+	else:
+		$AnimationTree.get("parameters/playback").travel("Walk")
+		$AnimationTree.set("parameters/Idle/blend_position", input_direction)
+		$AnimationTree.set("parameters/Walk/blend_position", input_direction)
+	
+	print(input_direction)
 	aim_direction = Vector2(
 		Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left"),
 		Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up"),
