@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://crt8uw1dq2hv1"]
+
+[ext_resource type="Script" path="res://dungeon_tester.gd" id="1_0fqml"]
+
+[node name="Dungeon Tester" type="Node2D"]
+script = ExtResource("1_0fqml")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = -558.0
+offset_top = -310.0
+offset_right = -431.0
+offset_bottom = -239.0
+text = "generate"
+
+[node name="MapNode" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
