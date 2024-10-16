@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		$AnimationTree.set("parameters/Idle/blend_position", input_direction)
 		$AnimationTree.set("parameters/Walk/blend_position", input_direction)
 	
-	print(input_direction)
+	#print(input_direction)
 	aim_direction = Vector2(
 		Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left"),
 		Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up"),
