@@ -88,3 +88,5 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_1dj12")
 frame = 8
 frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

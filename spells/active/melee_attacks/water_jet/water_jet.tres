@@ -8,9 +8,11 @@
 script = ExtResource("3_gdly5")
 scene = ExtResource("2_pxwqj")
 lifetime = 0.3
+damage = 20
 name = "Water Jet"
 icon = ExtResource("1_uh7ut")
 active = true
-cooldown = 0.0
+cooldown = 0.02
 continuous = true
+element = 0
 description = "Creates a constant torrent of water which can push things around"

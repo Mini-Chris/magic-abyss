@@ -9,11 +9,14 @@ enum Element {
 	EARTH
 }
 
-@export var damage_multiplier: float = .1  
+@export var damage_multiplier: float = .7
 
 var animated_sprite: AnimatedSprite2D
+var reaction_damage = 0
+var current_element = Element.NONE
 
 func _ready():
+	monitoring = true
 	animated_sprite = $AnimatedSprite2D 
 	animated_sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	animated_sprite.play("default")
@@ -25,12 +28,20 @@ func _on_animation_finished():
 func trigger_swirl(origin: Vector2, base_damage: int, element: Element):
 	animated_sprite = $AnimatedSprite2D 
 	animated_sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
-	animated_sprite.play("default")
-	print("Triggered swirl")
+	
 	global_position = origin
 	
-	var additional_damage = base_damage * damage_multiplier
+	reaction_damage = base_damage * damage_multiplier
+	current_element = element
 	
-	for enemy in get_overlapping_bodies():
-		if enemy.has_method("take_damage"):
-			enemy.take_damage(additional_damage, element)
+	animated_sprite.play("default")
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		if body.inflicted_element == current_element:
+			body.take_damage(reaction_damage, Element.NONE)
+			body.inflicted_element = Element.NONE
+		else:	
+			body.take_damage(reaction_damage, current_element)
+		

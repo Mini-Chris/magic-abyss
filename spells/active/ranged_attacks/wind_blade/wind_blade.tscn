@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ey5j6q32mrqn"]
+
+[ext_resource type="Script" path="res://spells/lib/projectile.gd" id="1_m52vw"]
+[ext_resource type="Texture2D" uid="uid://svfw83dcn1hr" path="res://reference_assets/Spell fx/Bullets Effects/Green Effect and Bullet 16x16.png" id="2_lnw4r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0a34"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm6fs"]
+atlas = ExtResource("2_lnw4r")
+region = Rect2(160, 48, 16, 32)
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_m52vw")
+projectile_speed = 400.0
+inaccuracy = 0.0
+variance = 0.0
+damage = 15
+element = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_p0a34")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+rotation = -1.5708
+texture = SubResource("AtlasTexture_jm6fs")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,40 +1,40 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6pbhphxhlgqg"]
+[gd_scene load_steps=13 format=3 uid="uid://cxmlf0rvw1lbk"]
 
-[ext_resource type="Script" path="res://enemies/lib/enemy.gd" id="1_liked"]
-[ext_resource type="Texture2D" uid="uid://d12gek81d165j" path="res://reference_assets/Monsters/Basic Asset Pack/Basic Monster Animations/Death Slime/DeathSlime.png" id="2_403wg"]
-[ext_resource type="Texture2D" uid="uid://hivyxkgad4xu" path="res://enemies/healthbarProgress.png" id="3_m1puc"]
-[ext_resource type="Texture2D" uid="uid://j1bt8iscwh8" path="res://reference_assets/[VerArc Stash] Basic_Skills_and_Buffs/spritesheet.png" id="4_stqgu"]
+[ext_resource type="Script" path="res://enemies/lib/enemy.gd" id="1_lmhp2"]
+[ext_resource type="Texture2D" uid="uid://xq6ic5b15c6y" path="res://reference_assets/Monsters/Basic Asset Pack/Basic Monster Animations/Brawny Ogre/BrawnyOgre.png" id="2_qlqw0"]
+[ext_resource type="Texture2D" uid="uid://hivyxkgad4xu" path="res://enemies/healthbarProgress.png" id="3_cppew"]
+[ext_resource type="Texture2D" uid="uid://j1bt8iscwh8" path="res://reference_assets/[VerArc Stash] Basic_Skills_and_Buffs/spritesheet.png" id="4_avq67"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2pt1"]
-atlas = ExtResource("2_403wg")
+[sub_resource type="AtlasTexture" id="AtlasTexture_grr7s"]
+atlas = ExtResource("2_qlqw0")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oe5yb"]
-atlas = ExtResource("2_403wg")
+[sub_resource type="AtlasTexture" id="AtlasTexture_r15jo"]
+atlas = ExtResource("2_qlqw0")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbt8s"]
-atlas = ExtResource("2_403wg")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hryl"]
+atlas = ExtResource("2_qlqw0")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1wnq"]
-atlas = ExtResource("2_403wg")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vp51"]
+atlas = ExtResource("2_qlqw0")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sbe0l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f2pt1")
+"texture": SubResource("AtlasTexture_grr7s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oe5yb")
+"texture": SubResource("AtlasTexture_r15jo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gbt8s")
+"texture": SubResource("AtlasTexture_2hryl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e1wnq")
+"texture": SubResource("AtlasTexture_0vp51")
 }],
 "loop": true,
 "name": &"default",
@@ -48,13 +48,15 @@ radius = 5.09902
 radius = 110.005
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d425b"]
-atlas = ExtResource("4_stqgu")
+atlas = ExtResource("4_avq67")
 region = Rect2(16, 0, 16, 16)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_liked")
+script = ExtResource("1_lmhp2")
+speed = 15.0
+max_health = 300
 invulnerability_duration = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -87,7 +89,7 @@ grow_vertical = 2
 scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(-4.67, 0)
 value = 100.0
-texture_progress = ExtResource("3_m1puc")
+texture_progress = ExtResource("3_cppew")
 
 [node name="StatusEffectContainer" type="HBoxContainer" parent="."]
 offset_left = -4.0
@@ -102,8 +104,8 @@ texture = SubResource("AtlasTexture_d425b")
 expand_mode = 2
 
 [node name="StatusIcon" type="Sprite2D" parent="StatusEffectContainer"]
-position = Vector2(8, 16)
-texture = ExtResource("4_stqgu")
+position = Vector2(8, 0)
+texture = ExtResource("4_avq67")
 offset = Vector2(0, -4)
 hframes = 8
 vframes = 6

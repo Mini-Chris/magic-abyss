@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjgw8xn2tkcix"]
+[gd_scene load_steps=14 format=3 uid="uid://bjgw8xn2tkcix"]
 
 [ext_resource type="PackedScene" uid="uid://bol4m3y2x4555" path="res://rooms/maps/map3.tscn" id="1_e2ex3"]
 [ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="2_myydy"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://etaijslg1naa" path="res://reference_assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/gem_01d.png" id="8_nvl7y"]
 [ext_resource type="PackedScene" uid="uid://cf1mykqr6qcmw" path="res://physics_objects/liftable.tscn" id="9_a7k8l"]
 [ext_resource type="PackedScene" uid="uid://b6pbhphxhlgqg" path="res://enemies/slime/slime.tscn" id="9_futum"]
+[ext_resource type="Resource" uid="uid://cscnmnv512i71" path="res://spells/active/ranged_attacks/wind_blade/wind_blade.tres" id="10_chefe"]
+[ext_resource type="Resource" uid="uid://dgn1rcpxumn1r" path="res://spells/active/ranged_attacks/fire_ball/fire_ball.tres" id="11_eqw5c"]
+[ext_resource type="Resource" uid="uid://m3pbgmotuqd4" path="res://spells/active/melee_attacks/lightning_bolt/lightning_bolt.tres" id="12_nb3gd"]
+[ext_resource type="PackedScene" uid="uid://cxmlf0rvw1lbk" path="res://enemies/ogre/ogre.tscn" id="13_q57c5"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -54,3 +58,21 @@ position = Vector2(0, -312)
 
 [node name="Enemy5" parent="." instance=ExtResource("9_futum")]
 position = Vector2(0, -264)
+
+[node name="Wind Blade" parent="." instance=ExtResource("4_ox1ol")]
+position = Vector2(-64, 72)
+spell = ExtResource("10_chefe")
+
+[node name="Wind Blade3" parent="." instance=ExtResource("4_ox1ol")]
+position = Vector2(-8, 72)
+spell = ExtResource("11_eqw5c")
+
+[node name="Wind Blade2" parent="." instance=ExtResource("4_ox1ol")]
+position = Vector2(56, 72)
+spell = ExtResource("12_nb3gd")
+
+[node name="Enemy6" parent="." instance=ExtResource("13_q57c5")]
+position = Vector2(288, -296)
+
+[node name="Enemy7" parent="." instance=ExtResource("13_q57c5")]
+position = Vector2(336, -296)

@@ -11,6 +11,7 @@ collision_layer = 8
 script = ExtResource("1_oe6wq")
 accel = -900.0
 inaccuracy = 20.0
+damage = 2
 element = 2
 
 [node name="Area2D" type="Area2D" parent="."]

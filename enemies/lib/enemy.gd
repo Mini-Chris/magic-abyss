@@ -13,7 +13,7 @@ enum Element {
 @export var max_health: int = 100
 @export var invulnerability_duration: float = 0.5
 
-var health: int = max_health
+var health: int
 var health_bar: TextureProgressBar
 var status_effects_container: HBoxContainer
 var status_icon: Sprite2D
@@ -43,6 +43,7 @@ func _ready() -> void:
 	add_child(inflicted_element_timer)
 	
 	health_bar = $HealthBar
+	health = max_health
 	update_health_bar()
 	
 	status_icon = $StatusEffectContainer/StatusIcon
@@ -101,7 +102,7 @@ func handle_elemental_reaction(damage: int, new_element: Element):
 			inflicted_element = Element.NONE
 		elif new_element == Element.WIND and (inflicted_element != Element.EARTH || inflicted_element != Element.WIND):
 			trigger_swirl(damage, inflicted_element)
-			inflicted_element = Element.NONE
+			#inflicted_element = Element.NONE
 		elif new_element == Element.EARTH and (inflicted_element != Element.EARTH || inflicted_element != Element.WIND):
 			trigger_crystallize(damage, inflicted_element)
 			inflicted_element = Element.NONE
@@ -141,13 +142,13 @@ func trigger_electrocute(damage: int):
 	get_tree().current_scene.add_child(electrocute_scene)
 
 func take_damage(damage: int, spell_element: Element):
-	if not is_invulnerable:  # Only take damage if not invulnerable
-		
-		if health <= 0:
-			die()
-		else:
-			handle_elemental_reaction(damage, spell_element)
-			enter_invulnerability()
+	#if not is_invulnerable:  # Only take damage if not invulnerable
+	#print("Took damage. Health is now ", health)
+	if health <= 0:
+		die()
+	else:
+		handle_elemental_reaction(damage, spell_element)
+		enter_invulnerability()
 	update_health_bar()
 
 func enter_invulnerability():
@@ -164,6 +165,8 @@ func die():
 	queue_free()  # Remove the enemy from the scene
 
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		die()
 	update_status_icon()
 	if player_chase:
 		var direction = (player.position - position).normalized()
@@ -179,9 +182,4 @@ func _physics_process(delta: float) -> void:
 func _on_detection_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
-	
-
-func _on_detection_body_exited(body: Node2D) -> void:
-	player = null
-	player_chase = false
 	

@@ -8,9 +8,11 @@
 script = ExtResource("3_f002g")
 scene = ExtResource("2_qjm12")
 lifetime = 5.0
+damage = 20
 name = "Stone Barrage"
 icon = ExtResource("1_06j4k")
 active = true
 cooldown = 0.2
 continuous = true
+element = 0
 description = "Creates a series of simple rocks that blast towards your enemies at high speeds."

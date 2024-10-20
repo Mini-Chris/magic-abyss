@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dgn1rcpxumn1r"]
+
+[ext_resource type="Texture2D" uid="uid://bp5w6adjs8o8b" path="res://reference_assets/Spell fx/Bullets Effects/Fire Effect and Bullet 16x16.png" id="1_nh0x3"]
+[ext_resource type="PackedScene" uid="uid://8e1wmamx5o2l" path="res://spells/active/ranged_attacks/fire_ball/fire_ball.tscn" id="2_wy0w8"]
+[ext_resource type="Script" path="res://spells/lib/scene_instance_spell.gd" id="3_yuu76"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m227r"]
+atlas = ExtResource("1_nh0x3")
+region = Rect2(416, 0, 16, 16)
+
+[resource]
+script = ExtResource("3_yuu76")
+scene = ExtResource("2_wy0w8")
+lifetime = 10.0
+damage = 20
+name = "Wind Blade"
+icon = SubResource("AtlasTexture_m227r")
+active = true
+cooldown = 1.5
+continuous = true
+element = 0
+description = "Fires a blade of wind"

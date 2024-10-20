@@ -9,7 +9,7 @@ enum Element {
 	EARTH
 }
 
-@export var damage_multiplier: float = .1  
+@export var damage_multiplier: float = .4
 
 var animated_sprite: AnimatedSprite2D
 var reaction_damage = 0
@@ -37,4 +37,7 @@ func trigger_electrocute(origin: Vector2, base_damage: int):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
-		body.take_damage(reaction_damage, Element.LIGHTNING)
+		if (body.inflicted_element == Element.WATER):
+			body.take_damage(reaction_damage, Element.LIGHTNING)
+		else:
+			body.take_damage(reaction_damage, Element.NONE)

@@ -9,7 +9,7 @@ enum Element {
 	EARTH
 }
 
-@export var damage_multiplier: float = .2  
+@export var damage_multiplier: float = 0.5
 
 var animated_sprite: AnimatedSprite2D
 var reaction_damage = 0
@@ -30,7 +30,7 @@ func trigger_crystallize(origin: Vector2, base_damage: int, element: Element):
 
 	global_position = origin
 	
-	reaction_damage = base_damage * damage_multiplier
+	reaction_damage = base_damage * damage_multiplier + 10
 	
 	animated_sprite.play("default")
 

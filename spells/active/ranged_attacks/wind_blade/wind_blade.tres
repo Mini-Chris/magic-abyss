@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cscnmnv512i71"]
+
+[ext_resource type="Texture2D" uid="uid://svfw83dcn1hr" path="res://reference_assets/Spell fx/Bullets Effects/Green Effect and Bullet 16x16.png" id="1_m15gh"]
+[ext_resource type="PackedScene" uid="uid://ey5j6q32mrqn" path="res://spells/active/ranged_attacks/wind_blade/wind_blade.tscn" id="2_pnxcd"]
+[ext_resource type="Script" path="res://spells/lib/scene_instance_spell.gd" id="3_nxfx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6cur"]
+atlas = ExtResource("1_m15gh")
+region = Rect2(384, 0, 16, 16)
+
+[resource]
+script = ExtResource("3_nxfx5")
+scene = ExtResource("2_pnxcd")
+lifetime = 10.0
+damage = 20
+name = "Wind Blade"
+icon = SubResource("AtlasTexture_o6cur")
+active = true
+cooldown = 0.5
+continuous = true
+element = 0
+description = "Fires a blade of wind"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://m3pbgmotuqd4"]
+
+[ext_resource type="Texture2D" uid="uid://dwj6vbxkiajlu" path="res://reference_assets/Spell fx/Bullets Effects/Purple Effect and Bullet 16x16.png" id="1_53g7m"]
+[ext_resource type="PackedScene" uid="uid://b3nvixyj2n25i" path="res://spells/active/melee_attacks/lightning_bolt/lightning_bolt.tscn" id="2_xpx51"]
+[ext_resource type="Script" path="res://spells/lib/scene_instance_spell.gd" id="3_8w7do"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m227r"]
+atlas = ExtResource("1_53g7m")
+region = Rect2(32, 112, 16, 16)
+
+[resource]
+script = ExtResource("3_8w7do")
+scene = ExtResource("2_xpx51")
+lifetime = 10.0
+damage = 20
+name = "Wind Blade"
+icon = SubResource("AtlasTexture_m227r")
+active = true
+cooldown = 1.0
+continuous = true
+element = 0
+description = "Fires a spark of lightning
+"

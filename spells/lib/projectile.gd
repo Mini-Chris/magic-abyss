@@ -14,6 +14,8 @@ func _ready() -> void:
 	velocity = velocity.rotated(randfn(0,inaccuracy/180))
 	velocity *= randfn(1,variance)
 	velocity += InstanceManager.player.velocity
+	
+	rotation = velocity.angle() + (PI / 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +23,8 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	velocity += velocity.normalized()*accel*delta
 	#if(get_slide_collision_count()>0): queue_free()
+	if velocity.length() > 0:
+		rotation = velocity.angle() + (PI / 2)
 
 
 
