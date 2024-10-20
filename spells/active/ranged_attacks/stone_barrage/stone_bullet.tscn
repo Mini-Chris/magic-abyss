@@ -9,7 +9,7 @@ radius = 6.0
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_vpq8n")
-element = 4
+element = 5
 
 [node name="Area2D" type="Area2D" parent="."]
 

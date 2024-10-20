@@ -12,8 +12,10 @@ enum Element {
 @export var damage_multiplier: float = .1  
 
 var animated_sprite: AnimatedSprite2D
+var reaction_damage = 0
 
 func _ready():
+	monitoring = true
 	animated_sprite = $AnimatedSprite2D 
 	animated_sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	animated_sprite.play("default")
@@ -25,16 +27,14 @@ func _on_animation_finished():
 func trigger_electrocute(origin: Vector2, base_damage: int):
 	animated_sprite = $AnimatedSprite2D 
 	animated_sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
-	
-	print("Triggered electrocute")
+
 	global_position = origin
 	
-	var additional_damage = base_damage * damage_multiplier
+	reaction_damage = base_damage * damage_multiplier
 	
-	var bodies = get_overlapping_bodies()
-	print(bodies)
-	for enemy in bodies:
-		if enemy.has_method("take_damage"):
-			enemy.take_damage(additional_damage, Element.LIGHTNING)
-			
 	animated_sprite.play("default")
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(reaction_damage, Element.LIGHTNING)

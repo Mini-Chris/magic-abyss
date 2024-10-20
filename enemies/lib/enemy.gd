@@ -10,8 +10,13 @@ enum Element {
 }
 
 @export var speed: float = 30
-@export var health: int = 100
+@export var max_health: int = 100
 @export var invulnerability_duration: float = 0.5
+
+var health: int = max_health
+var health_bar: TextureProgressBar
+var status_effects_container: HBoxContainer
+var status_icon: Sprite2D
 
 var is_invulnerable: bool = false  # To track if the enemy is invulnerable
 var invulnerability_timer: Timer
@@ -36,9 +41,32 @@ func _ready() -> void:
 	inflicted_element_timer.wait_time = 5.0  # Element wears off after 5 seconds
 	inflicted_element_timer.connect("timeout", Callable(self, "_on_element_timeout"))
 	add_child(inflicted_element_timer)
+	
+	health_bar = $HealthBar
+	update_health_bar()
+	
+	status_icon = $StatusEffectContainer/StatusIcon
+
+func update_health_bar():
+	health_bar.value = health
+	health_bar.max_value = max_health
 
 func apply_elemental_status(element: Element):
 	inflicted_element = element
+	
+func update_status_icon():
+	if inflicted_element == Element.NONE:
+		status_icon.visible = false
+	elif inflicted_element == Element.WATER:
+		status_icon.visible = true
+		status_icon.frame = 1
+	elif inflicted_element == Element.FIRE:
+		status_icon.visible = true
+		status_icon.frame = 3
+	elif inflicted_element == Element.LIGHTNING:
+		status_icon.visible = true
+		status_icon.frame = 37
+
 
 func print_element(element: Element):
 	if (element == Element.NONE):
@@ -56,11 +84,10 @@ func print_element(element: Element):
 
 func handle_elemental_reaction(damage: int, new_element: Element):
 	
-	
-	print("Current:")
-	print_element(inflicted_element)
-	print("New:")
-	print_element(new_element)
+	#print("Current:")
+	#print_element(inflicted_element)
+	#print("New:")
+	#print_element(new_element)
 	#inflicted_element = new_element
 	if inflicted_element == Element.NONE:
 		health -= damage
@@ -116,12 +143,12 @@ func trigger_electrocute(damage: int):
 func take_damage(damage: int, spell_element: Element):
 	if not is_invulnerable:  # Only take damage if not invulnerable
 		
-		print("Enemy health: ", health)
 		if health <= 0:
 			die()
 		else:
 			handle_elemental_reaction(damage, spell_element)
 			enter_invulnerability()
+	update_health_bar()
 
 func enter_invulnerability():
 	is_invulnerable = true
@@ -137,6 +164,7 @@ func die():
 	queue_free()  # Remove the enemy from the scene
 
 func _physics_process(delta: float) -> void:
+	update_status_icon()
 	if player_chase:
 		var direction = (player.position - position).normalized()
 		velocity = direction * speed
