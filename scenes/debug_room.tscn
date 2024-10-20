@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjgw8xn2tkcix"]
+[gd_scene load_steps=10 format=3 uid="uid://bjgw8xn2tkcix"]
 
 [ext_resource type="PackedScene" uid="uid://bol4m3y2x4555" path="res://rooms/maps/map3.tscn" id="1_e2ex3"]
 [ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="2_myydy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://lpa5g63m7o6i" path="res://spells/active/melee_attacks/water_jet/water_jet.tres" id="8_nejfb"]
 [ext_resource type="Texture2D" uid="uid://etaijslg1naa" path="res://reference_assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/gem_01d.png" id="8_nvl7y"]
 [ext_resource type="PackedScene" uid="uid://cf1mykqr6qcmw" path="res://physics_objects/liftable.tscn" id="9_a7k8l"]
+[ext_resource type="PackedScene" uid="uid://b6pbhphxhlgqg" path="res://enemies/slime/slime.tscn" id="9_futum"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -38,3 +39,18 @@ texture = ExtResource("7_21qtb")
 [node name="FireRune" parent="." instance=ExtResource("9_a7k8l")]
 position = Vector2(89, -26)
 texture = ExtResource("8_nvl7y")
+
+[node name="Enemy" parent="." instance=ExtResource("9_futum")]
+position = Vector2(0, -288)
+
+[node name="Enemy2" parent="." instance=ExtResource("9_futum")]
+position = Vector2(24, -288)
+
+[node name="Enemy3" parent="." instance=ExtResource("9_futum")]
+position = Vector2(-24, -288)
+
+[node name="Enemy4" parent="." instance=ExtResource("9_futum")]
+position = Vector2(0, -312)
+
+[node name="Enemy5" parent="." instance=ExtResource("9_futum")]
+position = Vector2(0, -264)

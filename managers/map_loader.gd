@@ -14,6 +14,8 @@ var LARGE_CHUNK_FOLDER_PATH = "res://rooms/floors/floor%d/maps/large_chunks/" % 
 @export var medium_marker_hor_group: String = "medium_marker_hor"
 @export var large_marker_group: String = "large_marker"
 
+@export var chunk_z_index: int = -1  # Z-index for the chunks
+
 # Called when the scene is ready
 func _ready():
 	randomize()  # Initialize random number generator
@@ -45,7 +47,9 @@ func handle_chunk_placement(chunk_folder: String, marker_group: String) -> void:
 			var chunk_instance = random_chunk.instantiate()
 			# Set the chunk's position to the marker's global position
 			chunk_instance.position = marker.global_position
-
+			
+			chunk_instance.z_index = chunk_z_index
+			
 			# Add the chunk instance to the scene
 			add_child(chunk_instance)
 

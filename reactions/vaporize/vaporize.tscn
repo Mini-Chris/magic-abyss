@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://p0ahgrs5jmqi"]
+
+[ext_resource type="Script" path="res://reactions/vaporize/vaporize.gd" id="1_mg8rg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhglk"]
+radius = 16.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g7lib"]
+load_path = "res://.godot/imported/34.png-94675309219494b0bb6868227aff6972.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e3l4"]
+atlas = SubResource("CompressedTexture2D_g7lib")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dqxw"]
+atlas = SubResource("CompressedTexture2D_g7lib")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pkt5"]
+atlas = SubResource("CompressedTexture2D_g7lib")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tiqx"]
+atlas = SubResource("CompressedTexture2D_g7lib")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_813yi"]
+atlas = SubResource("CompressedTexture2D_g7lib")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m62iw"]
+atlas = SubResource("CompressedTexture2D_g7lib")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh1nc"]
+atlas = SubResource("CompressedTexture2D_g7lib")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dhgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e3l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dqxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pkt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tiqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_813yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m62iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh1nc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Vaporize" type="Area2D"]
+script = ExtResource("1_mg8rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qhglk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2dhgx")
+frame = 6
+frame_progress = 1.0

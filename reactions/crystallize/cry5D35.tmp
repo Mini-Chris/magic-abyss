@@ -1,0 +1,104 @@
+[gd_scene load_steps=16 format=3 uid="uid://cnoi1pi03n2fv"]
+
+[ext_resource type="Script" path="res://reactions/crystallize/crystallize.gd" id="1_7n86q"]
+[ext_resource type="Texture2D" uid="uid://d2ido8npxu318" path="res://reference_assets/Spell fx/01.png" id="1_r0sw4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxus1"]
+radius = 56.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itpvg"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(0, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7d8f"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(64, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0gb1"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(128, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfyvj"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(192, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y5dn"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(256, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8416u"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(320, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2poj7"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(384, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux7qm"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(448, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4alv"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(512, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cbvf"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(576, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euv2a"]
+atlas = ExtResource("1_r0sw4")
+region = Rect2(640, 512, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxqsh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itpvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7d8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0gb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfyvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y5dn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8416u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2poj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux7qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4alv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cbvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euv2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Crystallize" type="Area2D"]
+script = ExtResource("1_7n86q")
+damage_multiplier = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sxus1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vxqsh")
+frame_progress = 0.559407

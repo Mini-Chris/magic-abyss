@@ -222,7 +222,6 @@ texture = ExtResource("1_2klcn")
 offset = Vector2(0, -7)
 hframes = 4
 vframes = 14
-frame = 1
 
 [node name="WallCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)

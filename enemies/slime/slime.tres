@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://bdghcj17uc5b2"]
+
+[ext_resource type="Script" path="res://spells/lib/enemy_data.gd" id="1_7xa2l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pk0d4"]
+
+[resource]
+script = ExtResource("1_7xa2l")
+name = "Slime"
+animated_sprite = SubResource("SpriteFrames_pk0d4")
+health = 10
+speed = 10.0
+description = ""

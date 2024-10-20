@@ -3,18 +3,23 @@
 [ext_resource type="Script" path="res://spells/lib/projectile.gd" id="1_oe6wq"]
 [ext_resource type="Texture2D" uid="uid://dic55klfam3u5" path="res://reference_assets/Key Items 16x16/14.png" id="2_2uh86"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dbnsh"]
-radius = 6.08276
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0a34"]
+radius = 8.0
 
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_oe6wq")
 accel = -900.0
 inaccuracy = 20.0
+element = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dbnsh")
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_p0a34")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
 texture = ExtResource("2_2uh86")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

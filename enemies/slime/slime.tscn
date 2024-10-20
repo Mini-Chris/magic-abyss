@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6pbhphxhlgqg"]
+
+[ext_resource type="Script" path="res://enemies/lib/enemy.gd" id="1_liked"]
+[ext_resource type="Texture2D" uid="uid://d12gek81d165j" path="res://reference_assets/Monsters/Basic Asset Pack/Basic Monster Animations/Death Slime/DeathSlime.png" id="2_403wg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2pt1"]
+atlas = ExtResource("2_403wg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe5yb"]
+atlas = ExtResource("2_403wg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbt8s"]
+atlas = ExtResource("2_403wg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1wnq"]
+atlas = ExtResource("2_403wg")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbe0l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2pt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe5yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbt8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1wnq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6wvm2"]
+radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vy6m7"]
+radius = 110.005
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_liked")
+speed = 0.0
+health = 2000
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sbe0l")
+frame_progress = 0.604209
+offset = Vector2(0, -3)
+
+[node name="Damage" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6wvm2")
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_vy6m7")
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]
