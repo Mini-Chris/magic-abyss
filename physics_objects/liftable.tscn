@@ -12,14 +12,6 @@ radius = 15.0
 [node name="Liftable" type="CharacterBody2D"]
 script = ExtResource("1_uh1lr")
 texture = ExtResource("2_tl7xr")
-throw_velocity = null
-bounciness = null
-speed_floor = null
-player_height_offset = null
-gravity = null
-damage = null
-damage_element = null
-is_key = null
 
 [node name="StaticCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g4nco")

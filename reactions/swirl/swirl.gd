@@ -9,7 +9,7 @@ enum Element {
 	EARTH
 }
 
-@export var damage_multiplier: float = .4
+@export var damage_multiplier: float = .25
 
 var animated_sprite: AnimatedSprite2D
 var reaction_damage = 0
@@ -31,7 +31,7 @@ func trigger_swirl(origin: Vector2, base_damage: int, element: Element):
 	
 	global_position = origin
 	
-	reaction_damage = base_damage * damage_multiplier + base_damage
+	reaction_damage = base_damage * damage_multiplier + base_damage / 2
 	current_element = element
 	
 	animated_sprite.play("default")

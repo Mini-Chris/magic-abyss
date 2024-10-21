@@ -13,11 +13,11 @@ script = ExtResource("3_8w7do")
 scene = ExtResource("2_xpx51")
 lifetime = 10.0
 damage = 20
-name = "Wind Blade"
+name = "Lightning Bolt"
 icon = SubResource("AtlasTexture_m227r")
 active = true
 cooldown = 1.0
 continuous = true
 element = 0
-description = "Fires a spark of lightning
+description = "Fires a spark of lightning at the opponent
 "

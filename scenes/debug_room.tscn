@@ -36,70 +36,47 @@ spell = ExtResource("8_nejfb")
 
 [node name="Rock" parent="." instance=ExtResource("9_a7k8l")]
 position = Vector2(-95, -20)
-throw_velocity = 50.0
-bounciness = 0.4
-speed_floor = 20.0
-player_height_offset = 20.0
-gravity = 200.0
-damage = 20.0
-damage_element = 0
-is_key = false
 
 [node name="BigKey" parent="." instance=ExtResource("9_a7k8l")]
 position = Vector2(71, 16)
 texture = ExtResource("7_21qtb")
-throw_velocity = 50.0
-bounciness = 0.4
-speed_floor = 20.0
-player_height_offset = 20.0
-gravity = 200.0
-damage = 20.0
-damage_element = 0
 is_key = true
 
 [node name="FireRune" parent="." instance=ExtResource("9_a7k8l")]
 position = Vector2(89, -26)
 texture = ExtResource("8_nvl7y")
-throw_velocity = 50.0
-bounciness = 0.4
-speed_floor = 20.0
-player_height_offset = 20.0
-gravity = 200.0
-damage = 20.0
-damage_element = 0
-is_key = false
 
-[node name="Enemy" parent="." instance=ExtResource("9_futum")]
+[node name="Slime1" parent="." instance=ExtResource("9_futum")]
 position = Vector2(0, -288)
 
-[node name="Enemy2" parent="." instance=ExtResource("9_futum")]
+[node name="Slime2" parent="." instance=ExtResource("9_futum")]
 position = Vector2(48, -288)
 
-[node name="Enemy3" parent="." instance=ExtResource("9_futum")]
+[node name="Slime3" parent="." instance=ExtResource("9_futum")]
 position = Vector2(-48, -288)
 
-[node name="Enemy4" parent="." instance=ExtResource("9_futum")]
+[node name="Slime4" parent="." instance=ExtResource("9_futum")]
 position = Vector2(0, -336)
 
-[node name="Enemy5" parent="." instance=ExtResource("9_futum")]
+[node name="Slime5" parent="." instance=ExtResource("9_futum")]
 position = Vector2(0, -240)
 
 [node name="Wind Blade" parent="." instance=ExtResource("4_ox1ol")]
 position = Vector2(-64, 72)
 spell = ExtResource("10_chefe")
 
-[node name="Wind Blade2" parent="." instance=ExtResource("4_ox1ol")]
+[node name="Fire Ball" parent="." instance=ExtResource("4_ox1ol")]
 position = Vector2(-8, 72)
 spell = ExtResource("11_eqw5c")
 
-[node name="Wind Blade3" parent="." instance=ExtResource("4_ox1ol")]
+[node name="Lightning Bolt" parent="." instance=ExtResource("4_ox1ol")]
 position = Vector2(56, 72)
 spell = ExtResource("12_nb3gd")
 
-[node name="Enemy6" parent="." instance=ExtResource("13_q57c5")]
+[node name="Ogre1" parent="." instance=ExtResource("13_q57c5")]
 position = Vector2(288, -296)
 
-[node name="Enemy7" parent="." instance=ExtResource("13_q57c5")]
+[node name="Ogre2" parent="." instance=ExtResource("13_q57c5")]
 position = Vector2(336, -296)
 
 [node name="BigDoor" parent="." instance=ExtResource("14_nts8j")]

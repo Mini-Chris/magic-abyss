@@ -144,6 +144,7 @@ func trigger_electrocute(damage: int, inflicted_element: Element):
 func take_damage(damage: int, spell_element: Element):
 	#if not is_invulnerable:  # Only take damage if not invulnerable
 	#print("Took damage. Health is now ", health)
+	player_chase = true
 	if health <= 0:
 		die()
 	else:

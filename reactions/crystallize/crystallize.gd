@@ -9,7 +9,7 @@ enum Element {
 	EARTH
 }
 
-@export var damage_multiplier: float = 0.5
+@export var damage_multiplier: float = 0.7
 
 var animated_sprite: AnimatedSprite2D
 var reaction_damage = 0
