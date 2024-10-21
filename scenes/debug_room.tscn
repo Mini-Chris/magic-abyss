@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjgw8xn2tkcix"]
+[gd_scene load_steps=15 format=3 uid="uid://bjgw8xn2tkcix"]
 
 [ext_resource type="PackedScene" uid="uid://bol4m3y2x4555" path="res://rooms/maps/map3.tscn" id="1_e2ex3"]
 [ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="2_myydy"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dgn1rcpxumn1r" path="res://spells/active/ranged_attacks/fire_ball/fire_ball.tres" id="11_eqw5c"]
 [ext_resource type="Resource" uid="uid://m3pbgmotuqd4" path="res://spells/active/melee_attacks/lightning_bolt/lightning_bolt.tres" id="12_nb3gd"]
 [ext_resource type="PackedScene" uid="uid://cxmlf0rvw1lbk" path="res://enemies/ogre/ogre.tscn" id="13_q57c5"]
+[ext_resource type="PackedScene" uid="uid://c45lmp4sghtq3" path="res://physics_objects/big_door.tscn" id="14_nts8j"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -35,14 +36,38 @@ spell = ExtResource("8_nejfb")
 
 [node name="Rock" parent="." instance=ExtResource("9_a7k8l")]
 position = Vector2(-95, -20)
+throw_velocity = 50.0
+bounciness = 0.4
+speed_floor = 20.0
+player_height_offset = 20.0
+gravity = 200.0
+damage = 20.0
+damage_element = 0
+is_key = false
 
 [node name="BigKey" parent="." instance=ExtResource("9_a7k8l")]
 position = Vector2(71, 16)
 texture = ExtResource("7_21qtb")
+throw_velocity = 50.0
+bounciness = 0.4
+speed_floor = 20.0
+player_height_offset = 20.0
+gravity = 200.0
+damage = 20.0
+damage_element = 0
+is_key = true
 
 [node name="FireRune" parent="." instance=ExtResource("9_a7k8l")]
 position = Vector2(89, -26)
 texture = ExtResource("8_nvl7y")
+throw_velocity = 50.0
+bounciness = 0.4
+speed_floor = 20.0
+player_height_offset = 20.0
+gravity = 200.0
+damage = 20.0
+damage_element = 0
+is_key = false
 
 [node name="Enemy" parent="." instance=ExtResource("9_futum")]
 position = Vector2(0, -288)
@@ -76,3 +101,6 @@ position = Vector2(288, -296)
 
 [node name="Enemy7" parent="." instance=ExtResource("13_q57c5")]
 position = Vector2(336, -296)
+
+[node name="BigDoor" parent="." instance=ExtResource("14_nts8j")]
+position = Vector2(-76, -88)

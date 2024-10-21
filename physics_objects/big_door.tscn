@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c45lmp4sghtq3"]
+
+[ext_resource type="Texture2D" uid="uid://gakn676xhwwm" path="res://rooms/atlases/atlas_walls_high-16x32.png" id="1_3slhp"]
+[ext_resource type="Script" path="res://physics_objects/big_door.gd" id="1_up8ml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyu7b"]
+size = Vector2(43, 34)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_up8ml")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3slhp")
+region_enabled = true
+region_rect = Rect2(264.285, 80.375, 48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 7)
+shape = SubResource("RectangleShape2D_pyu7b")

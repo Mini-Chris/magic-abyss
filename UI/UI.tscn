@@ -32,6 +32,7 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 script = ExtResource("1_mgojl")
+max_actives = 4
 max_passives = 1
 spells = Array[ExtResource("2_ki4r3")]([ExtResource("4_3cwwy")])
 
