@@ -1,7 +1,22 @@
 extends CharacterBody2D
 class_name Player
 
+enum State {
+	IDLE,
+	RUN,
+	ROLE,
+	HIT,
+	CHARGE,
+	DIE
+}
+
 @export var move_speed : float = 100
+
+var current_state: State = State.IDLE
+var animated_sprite: AnimatedSprite2D
+
+var y_offset : float
+var cast_speed: float
 
 var aim_direction: Vector2
 var most_recent_interactable
@@ -18,6 +33,33 @@ var lifted_object: Liftable = null:
 
 func _ready() -> void:
 	InstanceManager.player = self
+	animated_sprite = $AnimatedSprite2D  
+	set_animation(current_state)  
+	y_offset = animated_sprite.position.y
+	cast_speed = move_speed
+
+# Function to set the current state
+func set_state(state: State):
+	if current_state != state:
+		current_state = state
+
+# Function to switch the animation based on the current state
+func set_animation(state: State):
+	match state:
+		State.IDLE:
+			animated_sprite.play("idle") 
+		State.RUN:
+			animated_sprite.play("run")  
+		State.ROLE:
+			animated_sprite.play("role")  
+		State.CHARGE:
+			animated_sprite.play("charge")  
+		State.HIT:
+			animated_sprite.play("hit")  
+		State.DIE:
+			animated_sprite.play("die") 
+
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -27,11 +69,9 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	if input_direction == Vector2.ZERO:
-		$AnimationTree.get("parameters/playback").travel("Idle")
+		set_state(State.IDLE)
 	else:
-		$AnimationTree.get("parameters/playback").travel("Walk")
-		$AnimationTree.set("parameters/Idle/blend_position", input_direction)
-		$AnimationTree.set("parameters/Walk/blend_position", input_direction)
+		set_state(State.RUN)
 	
 	#print(input_direction)
 	aim_direction = Vector2(
@@ -45,10 +85,21 @@ func _physics_process(delta: float) -> void:
 	if input_direction.length_squared() > 1:
 		input_direction = input_direction.normalized()
 	
+	animated_sprite.flip_h = aim_direction.x < 0
 	velocity = input_direction * move_speed
 	if lifted_object: velocity *= lifted_object.speed_mult
 	
+	
+	if Input.is_action_pressed("cast"):
+		set_state(State.CHARGE)
+		animated_sprite.position.y = y_offset - 8
+		move_speed = cast_speed * 0.5
+	else:
+		animated_sprite.position.y = y_offset
+		move_speed = cast_speed
+	
 	move_and_slide()
+	set_animation(current_state)
 	
 	if not UI.lockInput:
 		
