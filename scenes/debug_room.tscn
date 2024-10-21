@@ -48,26 +48,26 @@ texture = ExtResource("8_nvl7y")
 position = Vector2(0, -288)
 
 [node name="Enemy2" parent="." instance=ExtResource("9_futum")]
-position = Vector2(24, -288)
+position = Vector2(48, -288)
 
 [node name="Enemy3" parent="." instance=ExtResource("9_futum")]
-position = Vector2(-24, -288)
+position = Vector2(-48, -288)
 
 [node name="Enemy4" parent="." instance=ExtResource("9_futum")]
-position = Vector2(0, -312)
+position = Vector2(0, -336)
 
 [node name="Enemy5" parent="." instance=ExtResource("9_futum")]
-position = Vector2(0, -264)
+position = Vector2(0, -240)
 
 [node name="Wind Blade" parent="." instance=ExtResource("4_ox1ol")]
 position = Vector2(-64, 72)
 spell = ExtResource("10_chefe")
 
-[node name="Wind Blade3" parent="." instance=ExtResource("4_ox1ol")]
+[node name="Wind Blade2" parent="." instance=ExtResource("4_ox1ol")]
 position = Vector2(-8, 72)
 spell = ExtResource("11_eqw5c")
 
-[node name="Wind Blade2" parent="." instance=ExtResource("4_ox1ol")]
+[node name="Wind Blade3" parent="." instance=ExtResource("4_ox1ol")]
 position = Vector2(56, 72)
 spell = ExtResource("12_nb3gd")
 

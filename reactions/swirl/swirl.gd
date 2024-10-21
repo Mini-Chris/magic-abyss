@@ -9,7 +9,7 @@ enum Element {
 	EARTH
 }
 
-@export var damage_multiplier: float = .7
+@export var damage_multiplier: float = .4
 
 var animated_sprite: AnimatedSprite2D
 var reaction_damage = 0
@@ -31,7 +31,7 @@ func trigger_swirl(origin: Vector2, base_damage: int, element: Element):
 	
 	global_position = origin
 	
-	reaction_damage = base_damage * damage_multiplier
+	reaction_damage = base_damage * damage_multiplier + base_damage
 	current_element = element
 	
 	animated_sprite.play("default")
@@ -39,9 +39,10 @@ func trigger_swirl(origin: Vector2, base_damage: int, element: Element):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
+		print(body.inflicted_element)
 		if body.inflicted_element == current_element:
 			body.take_damage(reaction_damage, Element.NONE)
-			body.inflicted_element = Element.NONE
+			#body.inflicted_element = Element.NONE
 		else:	
 			body.take_damage(reaction_damage, current_element)
 		

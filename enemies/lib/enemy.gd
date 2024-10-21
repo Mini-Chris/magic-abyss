@@ -11,9 +11,9 @@ enum Element {
 
 @export var speed: float = 30
 @export var max_health: int = 100
-@export var invulnerability_duration: float = 0.5
+var invulnerability_duration: float = 0.2
 
-var health: int
+@onready var health: int = max_health
 var health_bar: TextureProgressBar
 var status_effects_container: HBoxContainer
 var status_icon: Sprite2D
@@ -43,7 +43,6 @@ func _ready() -> void:
 	add_child(inflicted_element_timer)
 	
 	health_bar = $HealthBar
-	health = max_health
 	update_health_bar()
 	
 	status_icon = $StatusEffectContainer/StatusIcon
@@ -102,7 +101,7 @@ func handle_elemental_reaction(damage: int, new_element: Element):
 			inflicted_element = Element.NONE
 		elif new_element == Element.WIND and (inflicted_element != Element.EARTH || inflicted_element != Element.WIND):
 			trigger_swirl(damage, inflicted_element)
-			#inflicted_element = Element.NONE
+			inflicted_element = Element.NONE
 		elif new_element == Element.EARTH and (inflicted_element != Element.EARTH || inflicted_element != Element.WIND):
 			trigger_crystallize(damage, inflicted_element)
 			inflicted_element = Element.NONE
@@ -110,7 +109,7 @@ func handle_elemental_reaction(damage: int, new_element: Element):
 			trigger_overcharge(damage)
 			inflicted_element = Element.NONE
 		elif (new_element == Element.LIGHTNING and inflicted_element == Element.WATER) || (inflicted_element == Element.LIGHTNING and new_element == Element.WATER):
-			trigger_electrocute(damage)
+			trigger_electrocute(damage, inflicted_element)
 			inflicted_element = Element.NONE
 		else:
 			health -= damage
@@ -125,6 +124,7 @@ func trigger_swirl(damage: int, inflicted_element: Element):
 	var swirl_scene = preload("res://reactions/swirl/swirl.tscn").instantiate()
 	swirl_scene.trigger_swirl(global_position, damage, inflicted_element)
 	get_tree().current_scene.add_child(swirl_scene)
+	inflicted_element = Element.NONE
 
 func trigger_crystallize(damage: int, inflicted_element: Element):
 	var crystallize_scene = preload("res://reactions/crystallize/crystallize.tscn").instantiate()
@@ -136,9 +136,9 @@ func trigger_overcharge(damage: int):
 	overcharge_scene.trigger_overcharge(global_position, damage)  # Example damage
 	get_tree().current_scene.add_child(overcharge_scene)
 
-func trigger_electrocute(damage: int):
+func trigger_electrocute(damage: int, inflicted_element: Element):
 	var electrocute_scene = preload("res://reactions/electrocute/electrocute.tscn").instantiate()
-	electrocute_scene.trigger_electrocute(global_position, damage)  # Example damage
+	electrocute_scene.trigger_electrocute(global_position, damage, inflicted_element)  # Example damage
 	get_tree().current_scene.add_child(electrocute_scene)
 
 func take_damage(damage: int, spell_element: Element):
@@ -161,6 +161,7 @@ func _on_invulnerability_timeout():
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func die():
+	player_chase = false
 	print("Enemy has died.")
 	queue_free()  # Remove the enemy from the scene
 
@@ -168,6 +169,7 @@ func _physics_process(delta: float) -> void:
 	if health <= 0:
 		die()
 	update_status_icon()
+	update_health_bar()
 	if player_chase:
 		var direction = (player.position - position).normalized()
 		velocity = direction * speed

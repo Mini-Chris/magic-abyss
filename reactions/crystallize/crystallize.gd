@@ -30,7 +30,7 @@ func trigger_crystallize(origin: Vector2, base_damage: int, element: Element):
 
 	global_position = origin
 	
-	reaction_damage = base_damage * damage_multiplier + 10
+	reaction_damage = base_damage * damage_multiplier + base_damage
 	
 	animated_sprite.play("default")
 
