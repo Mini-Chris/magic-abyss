@@ -81,27 +81,3 @@ position = Vector2(336, -296)
 
 [node name="BigDoor" parent="." instance=ExtResource("14_nts8j")]
 position = Vector2(-76, -88)
-
-[node name="Orc_Rider" parent="." instance=ExtResource("15_5mnth")]
-position = Vector2(243, -67)
-
-[node name="Orc_Rider2" parent="." instance=ExtResource("15_5mnth")]
-position = Vector2(378, -71)
-
-[node name="Skeleton_Archer" parent="." instance=ExtResource("16_15juk")]
-position = Vector2(213, 64)
-
-[node name="Skeleton_Archer2" parent="." instance=ExtResource("16_15juk")]
-position = Vector2(261, 117)
-
-[node name="Arrow" parent="." instance=ExtResource("17_048ig")]
-position = Vector2(213, 68)
-
-[node name="Arrow2" parent="." instance=ExtResource("17_048ig")]
-position = Vector2(262, 122)
-
-[node name="Werebear" parent="." instance=ExtResource("18_1ld32")]
-position = Vector2(215, -383)
-
-[node name="Werebear2" parent="." instance=ExtResource("18_1ld32")]
-position = Vector2(384, -387)
