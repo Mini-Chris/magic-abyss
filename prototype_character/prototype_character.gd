@@ -103,6 +103,8 @@ func _physics_process(delta: float) -> void:
 	
 	if not UI.lockInput:
 		
+		$AimIndicator.position = aim_direction * 20
+		
 		if Input.is_action_just_pressed("interact"):
 			if not most_recent_interactable: return
 			most_recent_interactable.interact()

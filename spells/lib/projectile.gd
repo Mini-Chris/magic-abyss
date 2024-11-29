@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	connect("body_entered", Callable(self, "_on_body_entered"))
+	#connect("body_entered", Callable(self, "_on_body_entered"))
 	velocity = InstanceManager.player.aim_direction * projectile_speed
 	velocity = velocity.rotated(randfn(0,inaccuracy/180))
 	velocity *= randfn(1,variance)

@@ -52,7 +52,7 @@ func _attack() -> void:
 	player_chase = false
 
 	var tween := create_tween()
-	var target_vel := (player.global_position - global_position).normalized() * dash_speed
+	var target_vel = (player.global_position - global_position).normalized() * dash_speed
 	tween.tween_property(self, ^"_dash_velocity", target_vel, 0.02).set_ease(Tween.EASE_IN).from(Vector2())
 	tween.tween_callback(func(): _hitbox.monitoring = true)
 	tween.tween_interval(0.5)
@@ -122,4 +122,4 @@ func _on_hitbox_body_entered(body: Node) -> void:
 		return
 	if _sprite.animation != &"attack":
 		return
-	player.take_damage(damage)
+	#player.take_damage(damage,Element.NONE)

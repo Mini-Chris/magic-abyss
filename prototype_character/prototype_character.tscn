@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b3pbthx3wofro"]
+[gd_scene load_steps=55 format=3 uid="uid://b3pbthx3wofro"]
 
 [ext_resource type="Script" path="res://prototype_character/prototype_character.gd" id="1_ifwwv"]
 [ext_resource type="Texture2D" uid="uid://be6pr5htxafmm" path="res://reference_assets/Little Mage/AttackCharge/StaffWood/ChargeWood1.png" id="2_glnco"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://la1wdpfm2o76" path="res://reference_assets/Little Mage/Run/Run4.png" id="31_k01e7"]
 [ext_resource type="Texture2D" uid="uid://xxyp8lmp0g4s" path="res://reference_assets/Little Mage/Run/Run5.png" id="32_eg8jm"]
 [ext_resource type="Texture2D" uid="uid://cw22h651sld73" path="res://reference_assets/Little Mage/Run/Run6.png" id="33_w6qta"]
+[ext_resource type="Texture2D" uid="uid://mtuuj3i8qb5x" path="res://reference_assets/SnoopethDuckDuck Things/1px/29a.png" id="34_4mswm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b8lw"]
 size = Vector2(8, 4)
@@ -315,6 +316,12 @@ parameters/Walk/blend_position = Vector2(0, -0.994065)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a7vjs")
 animation = &"charge"
+
+[node name="AimIndicator" type="Sprite2D" parent="."]
+position = Vector2(25, 8)
+texture = ExtResource("34_4mswm")
+region_enabled = true
+region_rect = Rect2(2, 2, 3, 3)
 
 [connection signal="area_entered" from="PickupCollider" to="." method="_on_pickup_collider_area_entered"]
 [connection signal="area_exited" from="PickupCollider" to="." method="_on_pickup_collider_area_exited"]

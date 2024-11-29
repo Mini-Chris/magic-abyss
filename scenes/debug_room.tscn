@@ -45,6 +45,7 @@ is_key = true
 [node name="FireRune" parent="." instance=ExtResource("9_a7k8l")]
 position = Vector2(89, -26)
 texture = ExtResource("8_nvl7y")
+damage_element = 1
 
 [node name="Slime1" parent="." instance=ExtResource("9_futum")]
 position = Vector2(0, -288)
