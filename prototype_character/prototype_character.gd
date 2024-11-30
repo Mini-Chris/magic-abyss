@@ -78,8 +78,12 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left"),
 		Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up"),
 	)
-	if aim_direction.length_squared() == 0:
+	if aim_direction == Vector2.ZERO:
 		aim_direction = get_local_mouse_position()
+	if aim_direction.length_squared() < 0.5:
+		$AimIndicator.hide()
+	else:
+		$AimIndicator.show()
 	aim_direction = aim_direction.normalized()
 	
 	if input_direction.length_squared() > 1:
