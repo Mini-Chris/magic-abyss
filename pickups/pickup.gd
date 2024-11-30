@@ -16,12 +16,7 @@ func _ready() -> void:
 
 func interact():
 	if UI.inventory.spells.has(spell): return
-	if UI.inventory.spells.size() < UI.inventory.max_actives:
-		UI.inventory.spells.append(spell)
-		UI.inventory.update_graphics()
-		queue_free()
-	else:
-		spell = await UI.replacement_popup(spell)
+	UI.pickup_popup(self)
 
 func _process(delta: float) -> void:
 	$Icon.offset.y = 2.0*sin(Time.get_ticks_msec()/1000.0)

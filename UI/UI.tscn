@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6lrdrncnh5mc"]
+[gd_scene load_steps=16 format=3 uid="uid://b6lrdrncnh5mc"]
 
 [ext_resource type="Script" path="res://UI/ui.gd" id="1_bpnij"]
 [ext_resource type="Script" path="res://UI/inventory.gd" id="1_mgojl"]
@@ -8,8 +8,11 @@
 [ext_resource type="Resource" uid="uid://lpa5g63m7o6i" path="res://spells/active/melee_attacks/water_jet/water_jet.tres" id="4_3cwwy"]
 [ext_resource type="Script" path="res://UI/replacement_popup.gd" id="4_b4sof"]
 [ext_resource type="Texture2D" uid="uid://c41f5e4w2gov3" path="res://reference_assets/Custom Border and Panels Menu All Part/Border All 8.png" id="5_j3kdt"]
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="9_gehl7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsrp1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jpfk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tsya"]
 
@@ -18,7 +21,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_j27fq"]
 font_size = 8
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jpfk"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jl38"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_bpnij")
@@ -81,77 +84,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ReplacementPopup" type="PanelContainer" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_4tsya")
-script = ExtResource("4_b4sof")
-
-[node name="Dimmer" type="ColorRect" parent="ReplacementPopup"]
-layout_mode = 2
-color = Color(0, 0, 0, 0.541176)
-
-[node name="PanelContainer" type="PanelContainer" parent="ReplacementPopup"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_qs01f")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="ReplacementPopup/PanelContainer"]
-layout_mode = 2
-texture = ExtResource("5_j3kdt")
-region_rect = Rect2(0, 0, 64, 64)
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="ReplacementPopup/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="Content" type="VBoxContainer" parent="ReplacementPopup/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="ReplaceableSpells" type="HBoxContainer" parent="ReplacementPopup/PanelContainer/MarginContainer/Content"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="ReplacementPopup/PanelContainer/MarginContainer/Content"]
-layout_mode = 2
-text = "Choose a spell to replace with:"
-label_settings = SubResource("LabelSettings_j27fq")
-horizontal_alignment = 1
-
-[node name="ReplacementIcon" type="TextureRect" parent="ReplacementPopup/PanelContainer/MarginContainer/Content"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-stretch_mode = 2
-
-[node name="ReplacementName" type="Label" parent="ReplacementPopup/PanelContainer/MarginContainer/Content"]
-layout_mode = 2
-text = "Example"
-label_settings = SubResource("LabelSettings_j27fq")
-horizontal_alignment = 1
-
-[node name="ReplacementDesc" type="RichTextLabel" parent="ReplacementPopup/PanelContainer/MarginContainer/Content"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 8
-text = "this is a description."
-fit_content = true
-
 [node name="ControlHints" type="PanelContainer" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
@@ -189,3 +121,140 @@ theme_override_font_sizes/normal_font_size = 8
 text = "Interact"
 fit_content = true
 autowrap_mode = 0
+
+[node name="PickupPopup" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4tsya")
+script = ExtResource("4_b4sof")
+
+[node name="Dimmer" type="ColorRect" parent="PickupPopup"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.541176)
+
+[node name="PanelContainer" type="PanelContainer" parent="PickupPopup"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qs01f")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PickupPopup/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("5_j3kdt")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PickupPopup/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Content" type="VBoxContainer" parent="PickupPopup/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NewIcon" type="TextureRect" parent="PickupPopup/PanelContainer/MarginContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+stretch_mode = 2
+
+[node name="NewName" type="Label" parent="PickupPopup/PanelContainer/MarginContainer/Content"]
+layout_mode = 2
+text = "Example"
+label_settings = SubResource("LabelSettings_j27fq")
+horizontal_alignment = 1
+
+[node name="NewDesc" type="RichTextLabel" parent="PickupPopup/PanelContainer/MarginContainer/Content"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+text = "this is a description."
+fit_content = true
+
+[node name="InventoryFull" type="VBoxContainer" parent="PickupPopup/PanelContainer/MarginContainer/Content"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PickupPopup/PanelContainer/MarginContainer/Content/InventoryFull"]
+layout_mode = 2
+text = "Choose a spell to replace with:"
+label_settings = SubResource("LabelSettings_j27fq")
+horizontal_alignment = 1
+
+[node name="CurrentSpells" type="HBoxContainer" parent="PickupPopup/PanelContainer/MarginContainer/Content/InventoryFull"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Accept" type="Button" parent="PickupPopup/PanelContainer/MarginContainer/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Accept"
+
+[node name="Cancel" type="Button" parent="PickupPopup/PanelContainer/MarginContainer/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Cancel"
+
+[node name="MainMenu" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7jl38")
+script = ExtResource("9_gehl7")
+
+[node name="Dimmer" type="ColorRect" parent="MainMenu"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.541176)
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="ProgressBar" type="ProgressBar" parent="MainMenu/CenterContainer/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+max_value = 60.0
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Reset" type="Button" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reset"
+
+[node name="Continue" type="Button" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[connection signal="pressed" from="PickupPopup/PanelContainer/MarginContainer/Content/Accept" to="PickupPopup" method="_accept"]
+[connection signal="pressed" from="PickupPopup/PanelContainer/MarginContainer/Content/Cancel" to="PickupPopup" method="_cancel"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/Quit" to="MainMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/Reset" to="MainMenu" method="_on_reset_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/Continue" to="MainMenu" method="_on_continue_pressed"]
