@@ -15,6 +15,7 @@ func _on_quit_pressed() -> void:
 
 func _on_reset_pressed() -> void:
 	get_tree().change_scene_to_file("res://rooms/maps/tutorial_map/tutorial_map.tscn")
+	# clear inventory
 	hide()
 
 func _on_continue_pressed() -> void:

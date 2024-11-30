@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://bp2i53otht5x0"]
+[gd_scene load_steps=15 format=4 uid="uid://bp2i53otht5x0"]
 
 [ext_resource type="TileSet" uid="uid://dalvkkipa6hg5" path="res://rooms/tilesets/dungeon_16x16.tres" id="1_84xie"]
 [ext_resource type="TileSet" uid="uid://dbwn2oxhk72tr" path="res://rooms/tilesets/16x32.tres" id="2_wminc"]
 [ext_resource type="PackedScene" uid="uid://c45lmp4sghtq3" path="res://physics_objects/big_door.tscn" id="3_o0x4x"]
 [ext_resource type="Script" path="res://camera/camera.gd" id="4_frnib"]
+[ext_resource type="PackedScene" uid="uid://c2c8re4csqefh" path="res://rooms/maps/floor_1.tscn" id="4_pxsns"]
 [ext_resource type="PackedScene" uid="uid://b3pbthx3wofro" path="res://prototype_character/prototype_character.tscn" id="5_rjlyq"]
 [ext_resource type="PackedScene" uid="uid://cf1mykqr6qcmw" path="res://physics_objects/liftable.tscn" id="6_o2f8x"]
 [ext_resource type="Texture2D" uid="uid://bu67vg15wfkk8" path="res://reference_assets/SnoopethDuckDuck Things/1px/45.png" id="7_stv80"]
 [ext_resource type="PackedScene" uid="uid://c547ti0rvu0uu" path="res://pickups/pickup.tscn" id="8_cf512"]
+[ext_resource type="Resource" uid="uid://dgn1rcpxumn1r" path="res://spells/active/ranged_attacks/fire_ball/fire_ball.tres" id="9_10ilc"]
 [ext_resource type="PackedScene" uid="uid://va7gk4mrca3" path="res://enemies/orc_rider/orc_rider.tscn" id="9_b3b8q"]
 [ext_resource type="PackedScene" uid="uid://cxmlf0rvw1lbk" path="res://enemies/ogre/ogre.tscn" id="10_3x62h"]
 [ext_resource type="PackedScene" uid="uid://ho7yhmbdy5i0" path="res://enemies/skeleton_archer/skeleton_archer.tscn" id="11_y881b"]
@@ -25,11 +27,12 @@ tile_map_data = PackedByteArray("AAAAAAAAAQABAAAAAAABAAAAAQACAAMAAAACAAAAAQACAAM
 tile_set = ExtResource("2_wminc")
 
 [node name="Decorate" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABABQAAQAPAAIAAAAQABQAAQAPAAIAAAABACEAAQAPAAIAAAAQACEAAQAPAAIAAAABAA4AAQAPAAIAAAAQAA4AAQAPAAIAAAABAAEAAQAPAAIAAAAQAAEAAQAPAAIAAAAVAAEAAQAPAAIAAAAjAAEAAQAPAAIAAAAjAA4AAQAPAAIAAAAVAA4AAQAPAAIAAAAGABMAAQAMAAEAAAALABMAAQAMAAEAAAAaABAAAQAMAAEAAAAfABAAAQAMAAEAAAALABAAAQAMAAEAAAAGABAAAQAMAAEAAAASAAoAAQAMAAEAAAATAAoAAQAMAAEAAAASAAYAAQAMAAEAAAATAAYAAQAMAAEAAAAaAAAAAQANAAEAAAAeAAAAAQANAAEAAAAGAAAAAQANAAEAAAAKAAAAAQANAAEAAAAGABgAAQAPAAIAAAALABgAAQAPAAIAAAAGAB0AAQAPAAIAAAALAB0AAQAPAAIAAAA=")
+tile_map_data = PackedByteArray("AAABABQAAQAPAAIAAAAQABQAAQAPAAIAAAABACEAAQAPAAIAAAAQACEAAQAPAAIAAAABAA4AAQAPAAIAAAAQAA4AAQAPAAIAAAABAAEAAQAPAAIAAAAQAAEAAQAPAAIAAAAVAAEAAQAPAAIAAAAjAAEAAQAPAAIAAAAjAA4AAQAPAAIAAAAVAA4AAQAPAAIAAAAGABMAAQAMAAEAAAALABMAAQAMAAEAAAAaABAAAQAMAAEAAAAfABAAAQAMAAEAAAALABAAAQAMAAEAAAAGABAAAQAMAAEAAAASAAoAAQAMAAEAAAATAAoAAQAMAAEAAAASAAYAAQAMAAEAAAATAAYAAQAMAAEAAAAaAAAAAQANAAEAAAAGAAAAAQANAAEAAAAKAAAAAQANAAEAAAAGABgAAQAPAAIAAAALABgAAQAPAAIAAAAGAB0AAQAPAAIAAAALAB0AAQAPAAIAAAAfAAAAAQANAAEAAAA=")
 tile_set = ExtResource("2_wminc")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_o0x4x")]
 position = Vector2(464, 0)
+next_floor = ExtResource("4_pxsns")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(145, 440)
@@ -48,8 +51,9 @@ is_key = true
 [node name="Stone Barrage" parent="." instance=ExtResource("8_cf512")]
 position = Vector2(57, 440)
 
-[node name="Stone Barrage2" parent="." instance=ExtResource("8_cf512")]
+[node name="Fire Ball" parent="." instance=ExtResource("8_cf512")]
 position = Vector2(466, 393)
+spell = ExtResource("9_10ilc")
 
 [node name="Enemy" parent="." instance=ExtResource("9_b3b8q")]
 position = Vector2(462, 351)
@@ -83,3 +87,37 @@ position = Vector2(365, 244)
 
 [node name="Liftable4" parent="." instance=ExtResource("6_o2f8x")]
 position = Vector2(384, 234)
+
+[node name="RichTextLabel2" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 458.0
+offset_right = 156.0
+offset_bottom = 526.0
+scale = Vector2(0.63, 0.63)
+theme_override_colors/font_color = Color(1, 0.986205, 0.847628, 1)
+theme_override_constants/line_spacing = 2
+text = "Learn the Spell"
+horizontal_alignment = 1
+
+[node name="RichTextLabel3" type="Label" parent="."]
+offset_left = 97.0
+offset_top = 161.0
+offset_right = 256.0
+offset_bottom = 229.0
+scale = Vector2(0.63, 0.63)
+theme_override_colors/font_color = Color(1, 0.986205, 0.847628, 1)
+theme_override_constants/line_spacing = 2
+text = "Defeat the Monsters"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="."]
+offset_left = 420.0
+offset_top = 27.0
+offset_right = 566.0
+offset_bottom = 95.0
+scale = Vector2(0.63, 0.63)
+theme_override_colors/font_color = Color(1, 0.986205, 0.847628, 1)
+theme_override_constants/line_spacing = 2
+text = "Throw the Artifact
+at the Door"
+horizontal_alignment = 1

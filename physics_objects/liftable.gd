@@ -59,7 +59,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.take_damage(damage, damage_element)
 	if body.has_method("consume_key") and is_key:
-		body.queue_free()
+		body.consume_key()
 		queue_free()
 
 func get_interact_text():
