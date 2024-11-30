@@ -28,6 +28,7 @@ func open_popup(pickup:Node2D):
 	UI.lockInput = true
 	visible = true
 
+
 func close_popup():
 	closing.emit()
 	visible = false

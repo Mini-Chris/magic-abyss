@@ -22,12 +22,14 @@ func _process(delta: float) -> void:
 	$Icon.offset.y = 2.0*sin(Time.get_ticks_msec()/1000.0)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if UI.inventory.spells.has(spell):
-		$Status.text = "already held!"
-	else:
-		$Status.text = "press E to pick up"
+	if not UI.inventory.spells.has(spell):
 		$Icon.modulate = Color(1,1,1)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	$Icon.modulate = Color(0.5,0.5,0.5)
-	$Status.text = ""
+
+func get_interact_text():
+	if UI.inventory.spells.has(spell):
+		return "Already Have " + name
+	else:
+		return "E: Pick Up " + name

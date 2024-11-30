@@ -13,3 +13,13 @@ func _process(delta: float) -> void:
 			$PickupPopup._cancel()
 		else:
 			$MainMenu.show()
+	
+	var interaction = InstanceManager.player.most_recent_interactable
+	if interaction:
+		$ControlHints/GridContainer/Interact.text = interaction.get_interact_text()
+	else:
+		$ControlHints/GridContainer/Interact.text = ""
+	if InstanceManager.player.lifted_object:
+		$ControlHints/GridContainer/Throw.text = "F: Throw Object"
+	else:
+		$ControlHints/GridContainer/Throw.text = ""

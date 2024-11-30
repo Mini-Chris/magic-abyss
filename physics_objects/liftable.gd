@@ -61,3 +61,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("consume_key") and is_key:
 		body.queue_free()
 		queue_free()
+
+func get_interact_text():
+	return "E: Lift Object"
