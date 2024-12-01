@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b3pbthx3wofro"]
+[gd_scene load_steps=56 format=3 uid="uid://b3pbthx3wofro"]
 
 [ext_resource type="Script" path="res://prototype_character/prototype_character.gd" id="1_ifwwv"]
 [ext_resource type="Texture2D" uid="uid://be6pr5htxafmm" path="res://reference_assets/Little Mage/AttackCharge/StaffWood/ChargeWood1.png" id="2_glnco"]
@@ -42,7 +42,7 @@ size = Vector2(8, 4)
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3fvxx"]
-radius = 4.12311
+radius = 10.0499
 
 [sub_resource type="Animation" id="Animation_ndmkj"]
 length = 0.001
@@ -182,7 +182,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_b1d0l")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 10.0
 }, {
@@ -267,9 +267,13 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_gh2ry"]
+font_size = 12
+font_color = Color(1, 0, 0, 1)
+
 [node name="PrototypeCharacter" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 2
+collision_layer = 34
 collision_mask = 3
 script = ExtResource("1_ifwwv")
 
@@ -293,10 +297,10 @@ shape = SubResource("CircleShape2D_s702t")
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(0, 10)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -4)
+position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_3fvxx")
 
 [node name="Lifted" type="Sprite2D" parent="."]
@@ -315,7 +319,7 @@ parameters/Walk/blend_position = Vector2(0, -0.994065)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a7vjs")
-animation = &"charge"
+animation = &"die"
 
 [node name="AimIndicator" type="Sprite2D" parent="."]
 position = Vector2(25, 8)
@@ -323,5 +327,22 @@ texture = ExtResource("34_4mswm")
 region_enabled = true
 region_rect = Rect2(2, 2, 3, 3)
 
+[node name="DamageIndicator" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -26.0
+offset_right = 14.0
+offset_bottom = -9.0
+text = "-10"
+label_settings = SubResource("LabelSettings_gh2ry")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageIndicatorTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="PickupCollider" to="." method="_on_pickup_collider_area_entered"]
 [connection signal="area_exited" from="PickupCollider" to="." method="_on_pickup_collider_area_exited"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="DamageIndicatorTimer" to="." method="_on_damage_indicator_timer_timeout"]

@@ -28,6 +28,10 @@ window/stretch/scale=2.0
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[global_group]
+
+enemy_attacks=""
+
 [input]
 
 right={
@@ -128,6 +132,7 @@ menu={
 2d_physics/layer_3="Props"
 2d_physics/layer_4="Projectiles"
 2d_physics/layer_5="Interactables"
+2d_physics/layer_6="PlayerCharacter"
 
 [physics]
 

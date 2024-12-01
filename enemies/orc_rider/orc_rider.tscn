@@ -1,11 +1,11 @@
 [gd_scene load_steps=46 format=3 uid="uid://va7gk4mrca3"]
 
 [ext_resource type="Script" path="res://enemies/orc_rider/orc_rider.gd" id="1_bygq7"]
-[ext_resource type="Texture2D" uid="uid://ctr618yhmt5k6" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Attack02.png" id="2_37bhf"]
-[ext_resource type="Texture2D" uid="uid://cgqjoe0lf0txv" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Death.png" id="3_cmmnm"]
-[ext_resource type="Texture2D" uid="uid://c8dxgepewuyi4" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Idle.png" id="4_ihpqw"]
-[ext_resource type="Texture2D" uid="uid://dn5185g2d2oen" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Hurt.png" id="5_0xmh0"]
-[ext_resource type="Texture2D" uid="uid://chwowikqmfhak" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Walk.png" id="6_py7gr"]
+[ext_resource type="Texture2D" uid="uid://me3ehb4l7khp" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Attack02.png" id="2_37bhf"]
+[ext_resource type="Texture2D" uid="uid://bjc645enuco4m" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Death.png" id="3_cmmnm"]
+[ext_resource type="Texture2D" uid="uid://cipjld1bbw4oi" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Idle.png" id="4_ihpqw"]
+[ext_resource type="Texture2D" uid="uid://by57mafa2an48" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Hurt.png" id="5_0xmh0"]
+[ext_resource type="Texture2D" uid="uid://mu3aiialph66" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider with shadows/Orc rider-Walk.png" id="6_py7gr"]
 [ext_resource type="Texture2D" uid="uid://hivyxkgad4xu" path="res://enemies/healthbarProgress.png" id="7_ihswt"]
 [ext_resource type="Texture2D" uid="uid://j1bt8iscwh8" path="res://reference_assets/[VerArc Stash] Basic_Skills_and_Buffs/spritesheet.png" id="8_p81d3"]
 
@@ -15,11 +15,11 @@ radius = 5.09902
 [sub_resource type="CircleShape2D" id="CircleShape2D_vy6m7"]
 radius = 110.005
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q5qkm"]
-radius = 16.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tpu4"]
 radius = 26.1725
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5qkm"]
+radius = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ab5q"]
 atlas = ExtResource("2_37bhf")
@@ -288,23 +288,22 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_vy6m7")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["enemy_attacks"]]
 unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
-monitoring = false
 monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(3, -5)
-shape = SubResource("CircleShape2D_q5qkm")
-debug_color = Color(0.89443, 0.233826, 0.554476, 0.42)
 
 [node name="HitShape2" type="CollisionShape2D" parent="HitBox"]
 unique_name_in_owner = true
 position = Vector2(26, -11)
 shape = SubResource("CircleShape2D_0tpu4")
 disabled = true
+debug_color = Color(0.89443, 0.233826, 0.554476, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(3, -5)
+shape = SubResource("CircleShape2D_q5qkm")
 debug_color = Color(0.89443, 0.233826, 0.554476, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

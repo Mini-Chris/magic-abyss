@@ -33,4 +33,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange"]
 shape = SubResource("CircleShape2D_273ot")
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 10.0
+
 [connection signal="body_entered" from="Projectile" to="." method="_on_area_2d_body_entered"]

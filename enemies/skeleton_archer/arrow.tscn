@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0klxe5jblsx1"]
+[gd_scene load_steps=4 format=3 uid="uid://d0klxe5jblsx1"]
 
-[ext_resource type="Texture2D" uid="uid://fgqb33m8n6q" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton Archer/Arrow(projectile)/Arrow03(32x32).png" id="1_rmf2n"]
+[ext_resource type="Script" path="res://enemies/skeleton_archer/arrow.gd" id="1_1w4e4"]
+[ext_resource type="Texture2D" uid="uid://bqooo76d4no13" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton Archer/Arrow(projectile)/Arrow03(32x32).png" id="1_rmf2n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbd1u"]
 radius = 2.0
 height = 20.0
 
-[node name="Arrow" type="Area2D"]
+[node name="Arrow" type="Area2D" groups=["enemy_attacks"]]
+collision_layer = 8
+collision_mask = 37
+script = ExtResource("1_1w4e4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 0)

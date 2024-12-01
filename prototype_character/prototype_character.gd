@@ -11,6 +11,13 @@ enum State {
 }
 
 @export var move_speed : float = 100
+@export var max_health : float = 100
+@export var healing_rate: float = 1
+
+var health: float
+
+@onready var damage_indicator: Label = $DamageIndicator
+@onready var damage_indicator_timer: Timer = $DamageIndicatorTimer
 
 var current_state: State = State.IDLE
 var animated_sprite: AnimatedSprite2D
@@ -18,9 +25,12 @@ var animated_sprite: AnimatedSprite2D
 var y_offset : float
 var cast_speed: float
 
+var can_heal: bool
+
 var aim_direction: Vector2
 var most_recent_interactable
 var cooldowns = {}
+
 var lifted_object: Liftable = null:
 	set(new_object):
 		if new_object:
@@ -37,6 +47,8 @@ func _ready() -> void:
 	set_animation(current_state)  
 	y_offset = animated_sprite.position.y
 	cast_speed = move_speed
+	health = max_health
+	can_heal = false
 
 # Function to set the current state
 func set_state(state: State):
@@ -62,6 +74,24 @@ func set_animation(state: State):
 
 
 func _physics_process(delta: float) -> void:
+	print(health)
+	
+	if current_state == State.DIE:
+		return
+	
+	if health <= 0:
+		health = 0
+		set_state(State.DIE)
+		set_animation(State.DIE)
+		die()
+		return
+	
+	set_animation(current_state)
+	# automatic healing over time
+	if can_heal:
+		health += delta * healing_rate
+		if health > max_health:
+			health = max_health
 	
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -102,8 +132,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.position.y = y_offset
 		move_speed = cast_speed
 	
-	move_and_slide()
 	set_animation(current_state)
+	move_and_slide()
 	
 	if not UI.lockInput:
 		
@@ -131,3 +161,39 @@ func _on_pickup_collider_area_entered(area: Area2D) -> void:
 
 func _on_pickup_collider_area_exited(area: Area2D) -> void:
 	if most_recent_interactable == area.get_parent(): most_recent_interactable = null
+
+func damage(damage: float) -> void:
+	can_heal = false
+	
+	damage_indicator.text = str(0-int(damage))
+	damage_indicator.visible = true
+	damage_indicator_timer.start()
+	
+	health -= damage
+
+func die():
+	pass
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if current_state == State.DIE:
+		return
+	
+	if area.is_in_group("enemy_attacks"):
+		set_state(State.HIT)
+		
+		if ("damage" in area):
+			print("area")
+			damage(area.damage)
+		elif ("damage" in area.get_parent()):
+			print("parent")
+			damage(area.get_parent().damage)
+
+
+func _on_damage_indicator_timer_timeout() -> void:
+	damage_indicator.visible = false
+	can_heal = true
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if current_state == State.DIE:
+		animated_sprite.pause()

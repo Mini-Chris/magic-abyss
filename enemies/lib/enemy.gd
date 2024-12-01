@@ -9,6 +9,7 @@ enum Element {
 	EARTH
 }
 
+@export var damage:= 10
 @export var speed: float = 30
 @export var max_health: int = 100
 var invulnerability_duration: float = 0.2
@@ -26,6 +27,10 @@ var inflicted_element_timer: Timer
 
 var player = null
 var player_chase = false
+
+var navigation_agent: NavigationAgent2D
+
+
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
@@ -46,6 +51,8 @@ func _ready() -> void:
 	update_health_bar()
 	
 	status_icon = $StatusEffectContainer/StatusIcon
+	
+	navigation_agent = self.get_navigation_agent()
 
 func update_health_bar():
 	health_bar.value = health
@@ -172,8 +179,18 @@ func _physics_process(delta: float) -> void:
 	update_status_icon()
 	update_health_bar()
 	if player_chase:
-		var direction = (player.position - position).normalized()
-		velocity = direction * speed
+		if (navigation_agent != null):
+			navigation_agent.target_position = player.position
+			var current_pos = global_position
+			var next_path_pos = navigation_agent.get_next_path_position()
+			var new_velocity = current_pos.direction_to(next_path_pos) * speed
+			if navigation_agent.avoidance_enabled:
+				navigation_agent.set_velocity(new_velocity)
+			else:
+				velocity = new_velocity
+		else:
+			var direction = (player.position - position).normalized()
+			velocity = direction * speed
 		
 		if (player.position.x - position.x) < 0:
 			$AnimatedSprite2D.flip_h = true
@@ -182,7 +199,11 @@ func _physics_process(delta: float) -> void:
 		
 		move_and_slide()
 
+# to be overrode by child class
+func get_navigation_agent() -> Node:
+	return null
+
 func _on_detection_body_entered(body: Node2D) -> void:
-	player = body
-	player_chase = true
-	
+	if body is Player:
+		player = body
+		player_chase = true

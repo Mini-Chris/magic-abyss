@@ -1,6 +1,6 @@
 extends "res://enemies/lib/enemy.gd"
 
-@export var damage := 10
+@export var skeleton_damage := 10
 @export var arrow_life_time := 0.5
 @export var arrow_speed := 200.0
 @export var attack_cool_down_time_sec := 1.0
@@ -17,6 +17,7 @@ func _ready() -> void:
 	_sprite.animation_finished.connect(_on_animation_finished)
 	_sprite.frame_changed.connect(_on_sprite_frame_changed)
 	_timer.one_shot = true
+	damage = skeleton_damage
 	add_child(_timer)
 
 
@@ -72,6 +73,8 @@ func take_damage(p_damage: int, spell_element: Element) -> void:
 		return
 	_play_anima(&"hurt")
 
+func get_navigation_agent() -> Node:
+	return $NavigationAgent2D
 
 func _play_anima(anim: StringName) -> void:
 	if _sprite.is_playing() and _sprite.animation == anim:
@@ -104,12 +107,10 @@ func _on_sprite_frame_changed() -> void:
 		
 		_arrow.body_entered.connect(_on_arrow_body_entered)
 
-		get_tree().create_timer(arrow_life_time).timeout.connect(func(): _arrow.queue_free(); _arrow = null)
+		get_tree().create_timer(arrow_life_time).timeout.connect(func(): if _arrow != null: _arrow.queue_free(); _arrow = null)
 
 
 func _on_arrow_body_entered(body: Node) -> void:
-	if not body is Player:
-		return
-	player.take_damage(damage)
-	_arrow.queue_free()
-	_arrow = null
+	if _arrow != null:
+		_arrow.queue_free()
+		_arrow = null

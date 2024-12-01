@@ -1,13 +1,13 @@
 [gd_scene load_steps=45 format=3 uid="uid://dxbawfy7yyl2j"]
 
 [ext_resource type="Script" path="res://enemies/werebear/werebear.gd" id="1_noge6"]
-[ext_resource type="Texture2D" uid="uid://bre5b0doeehq8" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Attack01.png" id="2_d5ji3"]
+[ext_resource type="Texture2D" uid="uid://c3ost03ej730p" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Attack01.png" id="2_d5ji3"]
 [ext_resource type="Texture2D" uid="uid://hivyxkgad4xu" path="res://enemies/healthbarProgress.png" id="3_b4vg5"]
-[ext_resource type="Texture2D" uid="uid://irvienw1tdu8" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Idle.png" id="3_lsjxy"]
-[ext_resource type="Texture2D" uid="uid://b6qtoycvlhvfc" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Death.png" id="3_os3e3"]
+[ext_resource type="Texture2D" uid="uid://b4xxfnpqcinje" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Idle.png" id="3_lsjxy"]
+[ext_resource type="Texture2D" uid="uid://4w1dxio4ljmg" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Death.png" id="3_os3e3"]
 [ext_resource type="Texture2D" uid="uid://j1bt8iscwh8" path="res://reference_assets/[VerArc Stash] Basic_Skills_and_Buffs/spritesheet.png" id="4_8pvcf"]
-[ext_resource type="Texture2D" uid="uid://defm5wpqbfv0h" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Hurt.png" id="4_cfkfg"]
-[ext_resource type="Texture2D" uid="uid://dy310fvwctdv2" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Walk.png" id="5_f62lv"]
+[ext_resource type="Texture2D" uid="uid://drib1bvxipn5s" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Hurt.png" id="4_cfkfg"]
+[ext_resource type="Texture2D" uid="uid://bppjv65usaq3w" path="res://reference_assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werebear/Werebear with shadows/Werebear-Walk.png" id="5_f62lv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6wvm2"]
 radius = 5.09902

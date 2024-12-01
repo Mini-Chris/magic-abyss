@@ -1,6 +1,6 @@
 extends "res://enemies/lib/enemy.gd"
 
-@export var damage := 10
+@export var werebear_damage := 10
 @export var attack_cool_down_time_sec := 0.35
 
 @onready var _sprite: AnimatedSprite2D = %AnimatedSprite2D
@@ -15,6 +15,7 @@ func _ready() -> void:
 	_sprite.frame_changed.connect(_on_sprite_frame_changed)
 	_hitbox.body_entered.connect(_on_hitbox_body_entered)
 	_timer.one_shot = true
+	damage = werebear_damage
 	add_child(_timer)
 
 
@@ -99,4 +100,4 @@ func _on_sprite_frame_changed() -> void:
 func _on_hitbox_body_entered(body: Node) -> void:
 	if body != player:
 		return
-	player.take_damage(damage)
+	player.damage(damage)

@@ -36,6 +36,7 @@ text = "You Win
 horizontal_alignment = 1
 
 [node name="RichTextLabel" type="Label" parent="RichTextLabel"]
+layout_mode = 0
 offset_left = 30.1588
 offset_top = 198.413
 offset_right = 176.159
