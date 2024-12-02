@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c2c8re4csqefh"]
+[gd_scene load_steps=16 format=4 uid="uid://c2c8re4csqefh"]
 
 [ext_resource type="TileSet" uid="uid://dalvkkipa6hg5" path="res://rooms/tilesets/dungeon_16x16.tres" id="1_jebjq"]
 [ext_resource type="TileSet" uid="uid://dbwn2oxhk72tr" path="res://rooms/tilesets/16x32.tres" id="2_80jko"]
@@ -8,6 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://bu67vg15wfkk8" path="res://reference_assets/SnoopethDuckDuck Things/1px/45.png" id="6_j0kdw"]
 [ext_resource type="PackedScene" uid="uid://c45lmp4sghtq3" path="res://physics_objects/big_door.tscn" id="7_cxkej"]
 [ext_resource type="PackedScene" uid="uid://se735tumqjet" path="res://rooms/maps/win.tscn" id="8_vk0et"]
+[ext_resource type="PackedScene" uid="uid://va7gk4mrca3" path="res://enemies/orc_rider/orc_rider.tscn" id="9_xady2"]
+[ext_resource type="PackedScene" uid="uid://cxmlf0rvw1lbk" path="res://enemies/ogre/ogre.tscn" id="10_cgit4"]
+[ext_resource type="PackedScene" uid="uid://b6pbhphxhlgqg" path="res://enemies/slime/slime.tscn" id="11_qovdh"]
+[ext_resource type="PackedScene" uid="uid://ho7yhmbdy5i0" path="res://enemies/skeleton_archer/skeleton_archer.tscn" id="12_wvm7e"]
+[ext_resource type="PackedScene" uid="uid://c547ti0rvu0uu" path="res://pickups/pickup.tscn" id="13_7n1yx"]
+[ext_resource type="Resource" uid="uid://cscnmnv512i71" path="res://spells/active/ranged_attacks/wind_blade/wind_blade.tres" id="14_ucukd"]
+[ext_resource type="Resource" uid="uid://m3pbgmotuqd4" path="res://spells/active/melee_attacks/lightning_bolt/lightning_bolt.tres" id="15_wtc2p"]
 
 [node name="Map3" type="Node2D"]
 
@@ -41,3 +48,56 @@ is_key = true
 [node name="StaticBody2D" parent="." instance=ExtResource("7_cxkej")]
 position = Vector2(512, 192)
 next_floor = ExtResource("8_vk0et")
+
+[node name="Enemy" parent="." instance=ExtResource("9_xady2")]
+position = Vector2(508, 288)
+
+[node name="Enemy2" parent="." instance=ExtResource("10_cgit4")]
+position = Vector2(259, 283)
+
+[node name="Enemy3" parent="." instance=ExtResource("10_cgit4")]
+position = Vector2(355, 300)
+
+[node name="Enemy4" parent="." instance=ExtResource("10_cgit4")]
+position = Vector2(316, 235)
+
+[node name="Enemy5" parent="." instance=ExtResource("10_cgit4")]
+position = Vector2(304, 394)
+
+[node name="Enemy6" parent="." instance=ExtResource("11_qovdh")]
+position = Vector2(264, 230)
+
+[node name="Enemy7" parent="." instance=ExtResource("11_qovdh")]
+position = Vector2(406, 522)
+
+[node name="Enemy8" parent="." instance=ExtResource("11_qovdh")]
+position = Vector2(434, 520)
+
+[node name="Enemy9" parent="." instance=ExtResource("12_wvm7e")]
+position = Vector2(301, 490)
+
+[node name="Enemy10" parent="." instance=ExtResource("12_wvm7e")]
+position = Vector2(341, 345)
+
+[node name="Enemy11" parent="." instance=ExtResource("11_qovdh")]
+position = Vector2(277, 38)
+
+[node name="Enemy12" parent="." instance=ExtResource("11_qovdh")]
+position = Vector2(296, 57)
+
+[node name="Enemy13" parent="." instance=ExtResource("11_qovdh")]
+position = Vector2(324, 61)
+
+[node name="Enemy14" parent="." instance=ExtResource("11_qovdh")]
+position = Vector2(347, 41)
+
+[node name="Stone Barrage" parent="." instance=ExtResource("13_7n1yx")]
+position = Vector2(313, 35)
+
+[node name="Wind Blade" parent="." instance=ExtResource("13_7n1yx")]
+position = Vector2(59, 230)
+spell = ExtResource("14_ucukd")
+
+[node name="Lightning Bolt" parent="." instance=ExtResource("13_7n1yx")]
+position = Vector2(132, 232)
+spell = ExtResource("15_wtc2p")

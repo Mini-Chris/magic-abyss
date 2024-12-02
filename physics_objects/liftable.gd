@@ -28,6 +28,7 @@ func interact() -> void:
 	$StaticCollider.disabled = true
 	$Projectile/ProjectileCollider.disabled = true
 	$PickupRange.monitorable = false
+	$NavigationObstacle2D.avoidance_enabled = false
 
 func throw(new_position: Vector2, direction: Vector2) -> void:
 	position = new_position
@@ -38,12 +39,14 @@ func throw(new_position: Vector2, direction: Vector2) -> void:
 	vertical_velocity = -throw_velocity
 	$StaticCollider.disabled = true
 	$Projectile/ProjectileCollider.disabled = false
+	$NavigationObstacle2D.avoidance_enabled = true
 	$PickupRange.monitorable = false
 
 func stop():
 	velocity = Vector2.ZERO
 	$StaticCollider.disabled = false
 	$Projectile/ProjectileCollider.disabled = true
+	$NavigationObstacle2D.avoidance_enabled = true
 	$PickupRange.monitorable = true
 	$Sprite.offset.y = 0
 
@@ -61,6 +64,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("consume_key") and is_key:
 		body.consume_key()
 		queue_free()
+	if body is TileMapLayer:
+		velocity = Vector2.ZERO
 
 func get_interact_text():
 	return "E: Lift Object"

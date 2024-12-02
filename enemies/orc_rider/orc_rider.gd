@@ -1,6 +1,5 @@
 extends "res://enemies/lib/enemy.gd"
 
-@export var orc_rider_damage := 10
 @export var attack_cool_down_time_sec := 1.0
 @export var dash_speed := 160.0
 
@@ -19,7 +18,6 @@ func _ready() -> void:
 	_sprite.frame_changed.connect(_on_sprite_frame_changed)
 	_hitbox.body_entered.connect(_on_hitbox_body_entered)
 	_timer.one_shot = true
-	damage = orc_rider_damage
 	add_child(_timer)
 
 
@@ -123,7 +121,7 @@ func _on_sprite_frame_changed() -> void:
 	if _sprite.frame == 4:
 		%HitShape2.disabled = false
 	if _sprite.frame == 7:
-		%HitShape2.disabled = true
+		%HitShape2.disabled = true #these can be handled by the player, you know...
 
 
 func _on_hitbox_body_entered(body: Node) -> void:
@@ -131,4 +129,4 @@ func _on_hitbox_body_entered(body: Node) -> void:
 		return
 	if _sprite.animation != &"attack":
 		return
-	#player.take_damage(damage,Element.NONE)
+	player.take_damage(damage,Element.NONE)

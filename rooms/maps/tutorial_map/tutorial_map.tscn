@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bp2i53otht5x0"]
+[gd_scene load_steps=15 format=4 uid="uid://bp2i53otht5x0"]
 
 [ext_resource type="TileSet" uid="uid://dalvkkipa6hg5" path="res://rooms/tilesets/dungeon_16x16.tres" id="1_84xie"]
 [ext_resource type="Script" path="res://rooms/maps/tutorial_map/ground.gd" id="2_8kr1w"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bu67vg15wfkk8" path="res://reference_assets/SnoopethDuckDuck Things/1px/45.png" id="7_stv80"]
 [ext_resource type="PackedScene" uid="uid://c547ti0rvu0uu" path="res://pickups/pickup.tscn" id="8_cf512"]
 [ext_resource type="Resource" uid="uid://dgn1rcpxumn1r" path="res://spells/active/ranged_attacks/fire_ball/fire_ball.tres" id="9_10ilc"]
-[ext_resource type="PackedScene" uid="uid://va7gk4mrca3" path="res://enemies/orc_rider/orc_rider.tscn" id="9_b3b8q"]
 [ext_resource type="PackedScene" uid="uid://cxmlf0rvw1lbk" path="res://enemies/ogre/ogre.tscn" id="10_3x62h"]
 [ext_resource type="PackedScene" uid="uid://ho7yhmbdy5i0" path="res://enemies/skeleton_archer/skeleton_archer.tscn" id="11_y881b"]
 [ext_resource type="PackedScene" uid="uid://b6pbhphxhlgqg" path="res://enemies/slime/slime.tscn" id="12_6uv3g"]
@@ -62,9 +61,6 @@ position = Vector2(57, 440)
 [node name="Fire Ball" parent="." instance=ExtResource("8_cf512")]
 position = Vector2(466, 393)
 spell = ExtResource("9_10ilc")
-
-[node name="Enemy" parent="." instance=ExtResource("9_b3b8q")]
-position = Vector2(462, 351)
 
 [node name="Enemy2" parent="." instance=ExtResource("10_3x62h")]
 position = Vector2(434, 392)
