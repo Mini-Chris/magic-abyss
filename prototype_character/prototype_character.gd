@@ -74,7 +74,7 @@ func set_animation(state: State):
 
 
 func _physics_process(delta: float) -> void:
-	print(health)
+	#print(health)
 	
 	if current_state == State.DIE:
 		return
@@ -181,12 +181,12 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_attacks"):
 		set_state(State.HIT)
 		
-		if ("damage" in area):
-			print("area")
-			damage(area.damage)
-		elif ("damage" in area.get_parent()):
-			print("parent")
-			damage(area.get_parent().damage)
+		#if ("damage" in area):
+		#	print("area")
+		#	damage(area.damage)
+		#elif ("damage" in area.get_parent()):
+		#	print("parent")
+		#	damage(area.get_parent().damage)
 
 
 func _on_damage_indicator_timer_timeout() -> void:

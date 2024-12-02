@@ -38,6 +38,7 @@ tile_map_data = PackedByteArray("AAABABQAAQAPAAIAAAAQABQAAQAPAAIAAAABACEAAQAPAAI
 tile_set = ExtResource("2_wminc")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_o0x4x")]
+z_index = 1
 position = Vector2(464, 0)
 next_floor = ExtResource("4_pxsns")
 

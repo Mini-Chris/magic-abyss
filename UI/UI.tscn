@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6lrdrncnh5mc"]
+[gd_scene load_steps=20 format=3 uid="uid://b6lrdrncnh5mc"]
 
 [ext_resource type="Script" path="res://UI/ui.gd" id="1_bpnij"]
 [ext_resource type="Script" path="res://UI/inventory.gd" id="1_mgojl"]
@@ -8,9 +8,19 @@
 [ext_resource type="Resource" uid="uid://lpa5g63m7o6i" path="res://spells/active/melee_attacks/water_jet/water_jet.tres" id="4_3cwwy"]
 [ext_resource type="Script" path="res://UI/replacement_popup.gd" id="4_b4sof"]
 [ext_resource type="Texture2D" uid="uid://c41f5e4w2gov3" path="res://reference_assets/Custom Border and Panels Menu All Part/Border All 8.png" id="5_j3kdt"]
+[ext_resource type="Texture2D" uid="uid://eawrklxt2lx2" path="res://reference_assets/Custom Border and Panels Menu All Part/Border All 10.png" id="7_5ve4o"]
+[ext_resource type="Script" path="res://UI/healthbar.gd" id="8_6sx7t"]
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="9_gehl7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsrp1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mepd1"]
+atlas = ExtResource("7_5ve4o")
+region = Rect2(269, 66, 38, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8bkw"]
+atlas = ExtResource("5_j3kdt")
+region = Rect2(269, 66, 38, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jpfk"]
 
@@ -83,6 +93,28 @@ layout_mode = 2
 [node name="PassiveSpells" type="HBoxContainer" parent="Inventory/Hotbars/Passives"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Health" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Health"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+value = 50.0
+texture_under = SubResource("AtlasTexture_mepd1")
+texture_progress = SubResource("AtlasTexture_a8bkw")
+script = ExtResource("8_6sx7t")
 
 [node name="ControlHints" type="PanelContainer" parent="."]
 anchors_preset = 3
