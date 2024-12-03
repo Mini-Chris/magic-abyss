@@ -1,3 +1,15 @@
+# Instructions
+Double-clicking the exe should work. A controller or mouse are highly reccomended.
+On keyboard, WASD to move, and mouse pointer to aim. click to cast, scroll to select, E and F are hinted ingame.
+On controller, XBox-like control scheme.
+If using a trackpad, click spell icons instead of scrolling.
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________
+# Known Issues
+- Enemies sometimes get stuck together, or stuck to the player
+- The orc rider cannot do damage
+- The reset option does not clear the player's inventory
+- All randomization features are disabled because they were not completed in time for the release
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________
 # [Tiny RPG Character] Asset Pack License
 
 This asset pack is created by Zerie and is available under the following terms:
